@@ -7,6 +7,7 @@
 //
 
 #import "NPMDocument.h"
+#import "NPMWindowController.h"
 
 @implementation NPMDocument
 
@@ -19,11 +20,10 @@
     return self;
 }
 
-- (NSString *)windowNibName
+- (void)makeWindowControllers
 {
-    // Override returning the nib file name of the document
-    // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
-    return @"NPMDocument";
+    NPMWindowController *windowController = [[NPMWindowController alloc] init];
+    [self addWindowController:windowController];
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController

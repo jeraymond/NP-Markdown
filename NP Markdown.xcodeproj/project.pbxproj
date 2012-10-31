@@ -18,6 +18,11 @@
 		3F440A541641A83D001204AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F440A311641A83D001204AA /* Cocoa.framework */; };
 		3F440A5C1641A83D001204AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F440A5A1641A83D001204AA /* InfoPlist.strings */; };
 		3F440A5F1641A83D001204AA /* NP_MarkdownTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F440A5E1641A83D001204AA /* NP_MarkdownTests.m */; };
+		3F53BFD51641ABF300C65521 /* NPMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F53BFD41641ABF300C65521 /* NPMWindowController.m */; };
+		3FE1DE351641BD4000E5F14D /* NPMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1DE341641BD4000E5F14D /* NPMViewController.m */; };
+		3FE1DE381641C2A500E5F14D /* NPMEditorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE1DE371641C2A500E5F14D /* NPMEditorView.xib */; };
+		3FE1DE3A1641C35F00E5F14D /* NPMPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE1DE391641C35F00E5F14D /* NPMPreviewView.xib */; };
+		3FE1DE3C1641C37600E5F14D /* NPMSplitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE1DE3B1641C37600E5F14D /* NPMSplitView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,13 @@
 		3F440A5B1641A83D001204AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F440A5D1641A83D001204AA /* NP_MarkdownTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NP_MarkdownTests.h; sourceTree = "<group>"; };
 		3F440A5E1641A83D001204AA /* NP_MarkdownTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NP_MarkdownTests.m; sourceTree = "<group>"; };
+		3F53BFD31641ABF300C65521 /* NPMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMWindowController.h; sourceTree = "<group>"; };
+		3F53BFD41641ABF300C65521 /* NPMWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMWindowController.m; sourceTree = "<group>"; };
+		3FE1DE331641BD4000E5F14D /* NPMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMViewController.h; sourceTree = "<group>"; };
+		3FE1DE341641BD4000E5F14D /* NPMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMViewController.m; sourceTree = "<group>"; };
+		3FE1DE371641C2A500E5F14D /* NPMEditorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPMEditorView.xib; sourceTree = "<group>"; };
+		3FE1DE391641C35F00E5F14D /* NPMPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPMPreviewView.xib; sourceTree = "<group>"; };
+		3FE1DE3B1641C37600E5F14D /* NPMSplitView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPMSplitView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +130,15 @@
 			children = (
 				3F440A431641A83D001204AA /* NPMDocument.h */,
 				3F440A441641A83D001204AA /* NPMDocument.m */,
-				3F440A461641A83D001204AA /* NPMDocument.xib */,
 				3F440A491641A83D001204AA /* MainMenu.xib */,
+				3F53BFD31641ABF300C65521 /* NPMWindowController.h */,
+				3F53BFD41641ABF300C65521 /* NPMWindowController.m */,
+				3F440A461641A83D001204AA /* NPMDocument.xib */,
+				3FE1DE331641BD4000E5F14D /* NPMViewController.h */,
+				3FE1DE341641BD4000E5F14D /* NPMViewController.m */,
+				3FE1DE371641C2A500E5F14D /* NPMEditorView.xib */,
+				3FE1DE391641C35F00E5F14D /* NPMPreviewView.xib */,
+				3FE1DE3B1641C37600E5F14D /* NPMSplitView.xib */,
 				3F440A381641A83D001204AA /* Supporting Files */,
 			);
 			path = "NP Markdown";
@@ -232,6 +251,9 @@
 				3F440A421641A83D001204AA /* Credits.rtf in Resources */,
 				3F440A481641A83D001204AA /* NPMDocument.xib in Resources */,
 				3F440A4B1641A83D001204AA /* MainMenu.xib in Resources */,
+				3FE1DE381641C2A500E5F14D /* NPMEditorView.xib in Resources */,
+				3FE1DE3A1641C35F00E5F14D /* NPMPreviewView.xib in Resources */,
+				3FE1DE3C1641C37600E5F14D /* NPMSplitView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +290,8 @@
 			files = (
 				3F440A3E1641A83D001204AA /* main.m in Sources */,
 				3F440A451641A83D001204AA /* NPMDocument.m in Sources */,
+				3F53BFD51641ABF300C65521 /* NPMWindowController.m in Sources */,
+				3FE1DE351641BD4000E5F14D /* NPMViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +483,7 @@
 				3F440A641641A83D001204AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F440A651641A83D001204AA /* Build configuration list for PBXNativeTarget "NP MarkdownTests" */ = {
 			isa = XCConfigurationList;
@@ -467,6 +492,7 @@
 				3F440A671641A83D001204AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
