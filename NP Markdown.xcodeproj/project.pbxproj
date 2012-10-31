@@ -23,6 +23,7 @@
 		3FE1DE381641C2A500E5F14D /* NPMEditorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE1DE371641C2A500E5F14D /* NPMEditorView.xib */; };
 		3FE1DE3A1641C35F00E5F14D /* NPMPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE1DE391641C35F00E5F14D /* NPMPreviewView.xib */; };
 		3FE1DE3C1641C37600E5F14D /* NPMSplitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE1DE3B1641C37600E5F14D /* NPMSplitView.xib */; };
+		3FE222EA1641C98F006B95B4 /* EditTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE222E91641C98F006B95B4 /* EditTemplate.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		3FE1DE371641C2A500E5F14D /* NPMEditorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPMEditorView.xib; sourceTree = "<group>"; };
 		3FE1DE391641C35F00E5F14D /* NPMPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPMPreviewView.xib; sourceTree = "<group>"; };
 		3FE1DE3B1641C37600E5F14D /* NPMSplitView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPMSplitView.xib; sourceTree = "<group>"; };
+		3FE222E91641C98F006B95B4 /* EditTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EditTemplate.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		3F440A381641A83D001204AA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3FE222E91641C98F006B95B4 /* EditTemplate.png */,
 				3F440A391641A83D001204AA /* NP Markdown-Info.plist */,
 				3F440A3A1641A83D001204AA /* InfoPlist.strings */,
 				3F440A3D1641A83D001204AA /* main.m */,
@@ -254,6 +257,7 @@
 				3FE1DE381641C2A500E5F14D /* NPMEditorView.xib in Resources */,
 				3FE1DE3A1641C35F00E5F14D /* NPMPreviewView.xib in Resources */,
 				3FE1DE3C1641C37600E5F14D /* NPMSplitView.xib in Resources */,
+				3FE222EA1641C98F006B95B4 /* EditTemplate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
