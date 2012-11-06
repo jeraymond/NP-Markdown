@@ -17,6 +17,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class NPMData;
+@class NPMRenderer;
 @class WebView;
 
 /**
@@ -30,14 +31,19 @@
 @property (strong) NPMData *data;
 
 /**
+ The renderer.
+ */
+@property (strong) NPMRenderer *renderer;
+
+/**
   The editor text view.
  */
 @property (strong) IBOutlet NSTextView *editorTextView;
 
 /**
-  The preview web view.
+  The preview view. The preview content is a subview of this view.
  */
-@property (strong) IBOutlet WebView *previewWebView;
+@property (strong) IBOutlet NSView *previewView;
 
 /**
   Notify the view controller that its view was added to a view hierarchy.

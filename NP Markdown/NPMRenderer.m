@@ -14,24 +14,34 @@
  * limitations under the License.
  *******************************************************************************/
 
-#import <Cocoa/Cocoa.h>
+#import "NPMRenderer.h"
+#import "NPMData.h"
 
-@class NPMData;
-@class NPMRenderer;
+@implementation NPMRenderer
 
-/**
-  The Markdown document.
- */
-@interface NPMDocument : NSDocument
+@synthesize data;
+@synthesize html;
 
-/**
-  The model data.
- */
-@property (strong) NPMData *data;
+#pragma mark NSObject
 
-/**
-  The renderer.
- */
-@property (strong) NPMRenderer *renderer;
+- (id)init {
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:@"-init is not a valid initializer for the class NPMRenderer"
+                                 userInfo:nil];
+    return nil;
+}
+
+#pragma mark Init
+
+- (id)initWithData:(NPMData *)npmData
+{
+    self = [super init];
+    if (self) {
+        data = npmData;
+        // TODO: actually render the model data
+        html = [@"<h1>TODO: actually render the model data</h1>" stringByAppendingFormat:@"\n%@", data.text];
+    }
+    return self;
+}
 
 @end

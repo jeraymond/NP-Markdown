@@ -17,6 +17,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class NPMData;
+@class NPMRenderer;
 @class NPMViewController;
 
 /**
@@ -28,6 +29,11 @@
   The model data.
  */
 @property (strong) NPMData *data;
+
+/**
+ The renderer.
+ */
+@property (strong) NPMRenderer *renderer;
 
 /**
   The view segmented control used to change the currently displayed view.

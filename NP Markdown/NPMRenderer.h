@@ -14,15 +14,14 @@
  * limitations under the License.
  *******************************************************************************/
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 @class NPMData;
-@class NPMRenderer;
 
 /**
-  The Markdown document.
+  The Markdown renderer.
  */
-@interface NPMDocument : NSDocument
+@interface NPMRenderer : NSObject
 
 /**
   The model data.
@@ -30,8 +29,14 @@
 @property (strong) NPMData *data;
 
 /**
-  The renderer.
+  The most recent rendered data.
  */
-@property (strong) NPMRenderer *renderer;
+@property (strong) NSString *html;
+
+/**
+  Initialize the renderer with the given data.
+  @param npmData the data
+ */
+- (id)initWithData:(NPMData *)npmData;
 
 @end

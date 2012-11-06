@@ -20,7 +20,7 @@
 
 @synthesize text;
 
-#pragma mark Object
+#pragma mark NSObject
 
 - (id)init
 {

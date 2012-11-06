@@ -28,6 +28,7 @@
 @implementation NPMWindowController
 
 @synthesize data;
+@synthesize renderer;
 
 @synthesize viewSegmentedControl;
 @synthesize fileModeSegmentedControl;
@@ -128,12 +129,13 @@
     controller = [[NPMViewController alloc] initWithNibName:viewName bundle:nil];
     [self.viewControllers setObject:controller forKey:viewName];
     controller.data = self.data;
+    controller.renderer = self.renderer;
     return controller;
 }
 
 - (void)activateViewController:(NPMViewController *)viewController
 {
-    // Correct view size
+    // Set view size
     NSView *view = viewController.view;
     NSWindow *window = self.window;
     CGFloat padding = [window contentBorderThicknessForEdge:NSMinYEdge];

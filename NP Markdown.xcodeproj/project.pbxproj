@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F2E28C01648B6360077E4EE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2E28BF1648B6360077E4EE /* WebKit.framework */; };
+		3F2E28C41648BBBC0077E4EE /* NPMRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E28C31648BBBC0077E4EE /* NPMRenderer.m */; };
 		3F440A321641A83D001204AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F440A311641A83D001204AA /* Cocoa.framework */; };
 		3F440A3C1641A83D001204AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F440A3A1641A83D001204AA /* InfoPlist.strings */; };
 		3F440A3E1641A83D001204AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F440A3D1641A83D001204AA /* main.m */; };
@@ -47,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F2E28BF1648B6360077E4EE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		3F2E28C21648BBBC0077E4EE /* NPMRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMRenderer.h; sourceTree = "<group>"; };
+		3F2E28C31648BBBC0077E4EE /* NPMRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMRenderer.m; sourceTree = "<group>"; };
 		3F440A2D1641A83D001204AA /* NP Markdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NP Markdown.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F440A311641A83D001204AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3F440A341641A83D001204AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -101,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F2E28C01648B6360077E4EE /* WebKit.framework in Frameworks */,
 				3F440A321641A83D001204AA /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,6 +126,7 @@
 		3F440A221641A83D001204AA = {
 			isa = PBXGroup;
 			children = (
+				3F2E28BF1648B6360077E4EE /* WebKit.framework */,
 				3F440A371641A83D001204AA /* NP Markdown */,
 				3F440A571641A83D001204AA /* NP MarkdownTests */,
 				3FE2231916420B19006B95B4 /* Lumberjack */,
@@ -174,6 +181,8 @@
 				3FE1DE3B1641C37600E5F14D /* NPMSplitView.xib */,
 				3FE222FB1641D76C006B95B4 /* NPMData.h */,
 				3FE222FC1641D76C006B95B4 /* NPMData.m */,
+				3F2E28C21648BBBC0077E4EE /* NPMRenderer.h */,
+				3F2E28C31648BBBC0077E4EE /* NPMRenderer.m */,
 				3F440A381641A83D001204AA /* Supporting Files */,
 			);
 			path = "NP Markdown";
@@ -370,6 +379,7 @@
 				3FE2232E16420B19006B95B4 /* DDTTYLogger.m in Sources */,
 				3FE2232F16420B19006B95B4 /* ContextFilterLogFormatter.m in Sources */,
 				3FE2233016420B19006B95B4 /* DispatchQueueLogFormatter.m in Sources */,
+				3F2E28C41648BBBC0077E4EE /* NPMRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

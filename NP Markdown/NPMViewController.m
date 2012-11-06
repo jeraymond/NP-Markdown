@@ -14,19 +14,24 @@
  * limitations under the License.
  *******************************************************************************/
 
+#import <WebKit/WebKit.h>
 #import "NPMViewController.h"
 #import "NPMData.h"
+#import "NPMRenderer.h"
 
-@interface NPMViewController ()
+@interface NPMViewController () {
+    WebView *previewWebView;
+}
 
 @end
 
 @implementation NPMViewController
 
 @synthesize data;
+@synthesize renderer;
 
 @synthesize editorTextView;
-@synthesize previewWebView;
+@synthesize previewView;
 
 #pragma mark NSViewController
 
@@ -42,7 +47,33 @@
 
 - (void)viewDidAppear
 {
-    [editorTextView setString:[data text]];
+    [self initalizeEditorTextView];
+    [self initializePreviewWebView];
+}
+
+#pragma mark Internal
+
+- (void)initalizeEditorTextView
+{
+    if (editorTextView) {
+        [editorTextView setString:[data text]];
+    }
+}
+
+- (void)initializePreviewWebView
+{
+    if (previewView && !previewWebView) {
+        NSRect frame = [previewView frame];
+        previewWebView = [[WebView alloc] initWithFrame:NSMakeRect(0, 0, frame.size.width, frame.size.height)];
+        [previewWebView setUIDelegate:self];
+        [previewWebView setFrameLoadDelegate:self];
+        [previewWebView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
+        [previewView addSubview:previewWebView];
+    }
+    if (previewWebView) {
+        NSString *previewHtmlContent = renderer.html;
+        [[previewWebView mainFrame] loadHTMLString:previewHtmlContent baseURL:nil];
+    }
 }
 
 @end

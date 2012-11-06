@@ -17,10 +17,12 @@
 #import "NPMDocument.h"
 #import "NPMWindowController.h"
 #import "NPMData.h"
+#import "NPMRenderer.h"
 
 @implementation NPMDocument
 
 @synthesize data;
+@synthesize renderer;
 
 #pragma mark Document
 
@@ -28,8 +30,9 @@
 {
     self = [super init];
     if (self) {
-        self.data = [[NPMData alloc] init];
-        self.data.text = @"# TODO: load data from elsewhere"; // TODO
+        data = [[NPMData alloc] init];
+        data.text = @"# TODO: load data from elsewhere"; // TODO
+        renderer = [[NPMRenderer alloc] initWithData:data];
     }
     return self;
 }
@@ -38,6 +41,7 @@
 {
     NPMWindowController *windowController = [[NPMWindowController alloc] init];
     windowController.data = self.data;
+    windowController.renderer = self.renderer;
     [self addWindowController:windowController];
 }
 
