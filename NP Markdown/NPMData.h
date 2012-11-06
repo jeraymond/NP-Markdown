@@ -14,12 +14,16 @@
  * limitations under the License.
  *******************************************************************************/
 
-#import <Cocoa/Cocoa.h>
-#import "NPMLog.h"
+#import <Foundation/Foundation.h>
 
-int main(int argc, char *argv[])
-{
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    return NSApplicationMain(argc, (const char **)argv);
-}
+/**
+  The Markdown data model.
+ */
+@interface NPMData : NSObject
+
+/**
+  The Markdown syntax text.
+ */
+@property (strong) NSString *text;
+
+@end

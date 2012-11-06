@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1080</int>
 		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2843</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2843</string>
+			<string key="NS.object.0">2844</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBNSLayoutConstraint</string>
@@ -70,9 +70,10 @@
 							<object class="NSSegmentedControl" key="NSToolbarItemView" id="197537767">
 								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
-								<string key="NSFrame">{{0, 14}, {220, 25}}</string>
+								<string key="NSFrame">{{0, 14}, {208, 25}}</string>
 								<reference key="NSSuperview"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSegmentedCell" key="NSCell" id="610748163">
@@ -87,19 +88,19 @@
 									<reference key="NSControlView" ref="197537767"/>
 									<array class="NSMutableArray" key="NSSegmentImages">
 										<object class="NSSegmentItem">
-											<double key="NSSegmentItemWidth">72</double>
+											<double key="NSSegmentItemWidth">68</double>
 											<string key="NSSegmentItemLabel">Editor</string>
 											<int key="NSSegmentItemImageScaling">0</int>
 										</object>
 										<object class="NSSegmentItem">
-											<double key="NSSegmentItemWidth">72</double>
+											<double key="NSSegmentItemWidth">68</double>
 											<string key="NSSegmentItemLabel">Split</string>
 											<int key="NSSegmentItemTag">1</int>
 											<bool key="NSSegmentItemSelected">YES</bool>
 											<int key="NSSegmentItemImageScaling">0</int>
 										</object>
 										<object class="NSSegmentItem">
-											<double key="NSSegmentItemWidth">72</double>
+											<double key="NSSegmentItemWidth">68</double>
 											<string key="NSSegmentItemLabel">Preview</string>
 											<int key="NSSegmentItemImageScaling">0</int>
 										</object>
@@ -112,8 +113,8 @@
 							<nil key="NSToolbarItemImage"/>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
-							<string key="NSToolbarItemMinSize">{220, 25}</string>
-							<string key="NSToolbarItemMaxSize">{220, 25}</string>
+							<string key="NSToolbarItemMinSize">{188, 25}</string>
+							<string key="NSToolbarItemMaxSize">{208, 28}</string>
 							<bool key="NSToolbarItemEnabled">YES</bool>
 							<bool key="NSToolbarItemAutovalidates">YES</bool>
 							<int key="NSToolbarItemTag">0</int>
@@ -130,9 +131,10 @@
 							<object class="NSSegmentedControl" key="NSToolbarItemView" id="361026373">
 								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
-								<string key="NSFrame">{{0, 14}, {83, 25}}</string>
+								<string key="NSFrame">{{0, 14}, {78, 25}}</string>
 								<reference key="NSSuperview"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSegmentedCell" key="NSCell" id="874992877">
@@ -143,7 +145,7 @@
 									<reference key="NSControlView" ref="361026373"/>
 									<array class="NSMutableArray" key="NSSegmentImages">
 										<object class="NSSegmentItem">
-											<double key="NSSegmentItemWidth">40</double>
+											<double key="NSSegmentItemWidth">38</double>
 											<object class="NSCustomResource" key="NSSegmentItemImage">
 												<string key="NSClassName">NSImage</string>
 												<string key="NSResourceName">EditTemplate</string>
@@ -152,7 +154,6 @@
 											<int key="NSSegmentItemImageScaling">0</int>
 										</object>
 										<object class="NSSegmentItem">
-											<double key="NSSegmentItemWidth">40</double>
 											<object class="NSCustomResource" key="NSSegmentItemImage">
 												<string key="NSClassName">NSImage</string>
 												<string key="NSResourceName">NSQuickLookTemplate</string>
@@ -171,7 +172,7 @@
 							<nil key="NSToolbarItemImage"/>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
-							<string key="NSToolbarItemMinSize">{67, 25}</string>
+							<string key="NSToolbarItemMinSize">{78, 25}</string>
 							<string key="NSToolbarItemMaxSize">{83, 28}</string>
 							<bool key="NSToolbarItemEnabled">YES</bool>
 							<bool key="NSToolbarItemAutovalidates">YES</bool>
@@ -192,6 +193,7 @@
 								<string key="NSFrame">{{0, 14}, {150, 28}}</string>
 								<reference key="NSSuperview"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSPopUpButtonCell" key="NSCell" id="144780757">
@@ -225,7 +227,7 @@
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
 							<string key="NSToolbarItemMinSize">{100, 25}</string>
-							<string key="NSToolbarItemMaxSize">{150, 28}</string>
+							<string key="NSToolbarItemMaxSize">{160, 28}</string>
 							<bool key="NSToolbarItemEnabled">YES</bool>
 							<bool key="NSToolbarItemAutovalidates">YES</bool>
 							<int key="NSToolbarItemTag">0</int>
@@ -293,7 +295,7 @@
 							</object>
 						</object>
 					</dictionary>
-					<array key="NSToolbarIBAllowedItems">
+					<array class="NSMutableArray" key="NSToolbarIBAllowedItems">
 						<reference ref="66154367"/>
 						<reference ref="354368473"/>
 						<reference ref="198896599"/>
@@ -301,18 +303,10 @@
 						<reference ref="943742068"/>
 					</array>
 					<array key="NSToolbarIBDefaultItems">
-						<reference ref="728048842"/>
-						<reference ref="198896599"/>
-						<reference ref="198896599"/>
-						<reference ref="198896599"/>
-						<reference ref="198896599"/>
-						<reference ref="198896599"/>
-						<reference ref="198896599"/>
-						<reference ref="198896599"/>
 						<reference ref="66154367"/>
+						<reference ref="943742068"/>
 						<reference ref="728048842"/>
 						<reference ref="354368473"/>
-						<reference ref="943742068"/>
 					</array>
 					<array key="NSToolbarIBSelectableItems" id="0"/>
 				</object>
@@ -328,6 +322,7 @@
 							<string key="NSFrame">{{17, 4}, {766, 14}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="235223120">
@@ -368,7 +363,7 @@
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="91279811"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {2560, 1578}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{800, 671}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSAutorecalculatesContentBorderThicknessMinY">NO</bool>
@@ -396,6 +391,38 @@
 						<reference key="destination" ref="91279811"/>
 					</object>
 					<int key="connectionID">100047</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">viewSegmentedControl</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="197537767"/>
+					</object>
+					<int key="connectionID">100070</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">viewSelectionDidChange:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="197537767"/>
+					</object>
+					<int key="connectionID">100071</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">fileModeSegmentedControl</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="361026373"/>
+					</object>
+					<int key="connectionID">100072</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">fileModeSelectionDidChange:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="361026373"/>
+					</object>
+					<int key="connectionID">100073</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -633,7 +660,7 @@
 				<string key="100042.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100045.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100049.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<integer value="2" key="100050.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
+				<integer value="1" key="100050.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="100050.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100051.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100052.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -644,7 +671,7 @@
 				<string key="100065.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100066.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100067.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<integer value="1" key="100068.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
+				<integer value="0" key="100068.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="100068.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100069.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -660,24 +687,46 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">100069</int>
+			<int key="maxID">100074</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">NPMWindowController</string>
 					<string key="superclassName">NSWindowController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">bottomBorderTextField</string>
-						<string key="NS.object.0">NSTextField</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">bottomBorderTextField</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="fileModeSelectionDidChange:">id</string>
+						<string key="viewSelectionDidChange:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="fileModeSelectionDidChange:">
+							<string key="name">fileModeSelectionDidChange:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="viewSelectionDidChange:">
+							<string key="name">viewSelectionDidChange:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="bottomBorderTextField">NSTextField</string>
+						<string key="fileModeSegmentedControl">NSSegmentedControl</string>
+						<string key="viewSegmentedControl">NSSegmentedControl</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="bottomBorderTextField">
 							<string key="name">bottomBorderTextField</string>
 							<string key="candidateClassName">NSTextField</string>
 						</object>
-					</object>
+						<object class="IBToOneOutletInfo" key="fileModeSegmentedControl">
+							<string key="name">fileModeSegmentedControl</string>
+							<string key="candidateClassName">NSSegmentedControl</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewSegmentedControl">
+							<string key="name">viewSegmentedControl</string>
+							<string key="candidateClassName">NSSegmentedControl</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/NPMWindowController.h</string>

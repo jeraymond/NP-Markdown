@@ -14,12 +14,11 @@
  * limitations under the License.
  *******************************************************************************/
 
-#import <Cocoa/Cocoa.h>
-#import "NPMLog.h"
+#import "DDLog.h"
+#import "DDTTYLogger.h"
+#import "DDASLLogger.h"
 
-int main(int argc, char *argv[])
-{
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    return NSApplicationMain(argc, (const char **)argv);
-}
+/**
+  The current log level.
+ */
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;

@@ -14,12 +14,21 @@
  * limitations under the License.
  *******************************************************************************/
 
-#import <Cocoa/Cocoa.h>
-#import "NPMLog.h"
+#import "NPMData.h"
 
-int main(int argc, char *argv[])
+@implementation NPMData
+
+@synthesize text;
+
+#pragma mark Object
+
+- (id)init
 {
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    return NSApplicationMain(argc, (const char **)argv);
+    self = [super init];
+    if (self) {
+        // Initialization code here.
+    }
+    return self;
 }
+
+@end
