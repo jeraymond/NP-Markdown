@@ -21,18 +21,15 @@
 
 @implementation NPMDocument
 
-@synthesize data;
-@synthesize renderer;
-
 #pragma mark Document
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        data = [[NPMData alloc] init];
-        data.text = @"# TODO: load data from elsewhere"; // TODO
-        renderer = [[NPMRenderer alloc] initWithData:data];
+        self.data = [[NPMData alloc] init];
+        self.data.text = @"# TODO: load data from elsewhere"; // TODO
+        self.renderer = [[NPMRenderer alloc] initWithData:self.data];
     }
     return self;
 }

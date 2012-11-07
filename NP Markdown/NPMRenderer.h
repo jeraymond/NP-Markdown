@@ -36,6 +36,7 @@
 /**
   Initialize the renderer with the given data.
   @param npmData the data
+  @return the renderer or nil
  */
 - (id)initWithData:(NPMData *)npmData;
 

@@ -27,12 +27,6 @@
 
 @implementation NPMViewController
 
-@synthesize data;
-@synthesize renderer;
-
-@synthesize editorTextView;
-@synthesize previewView;
-
 #pragma mark NSViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,23 +49,23 @@
 
 - (void)initalizeEditorTextView
 {
-    if (editorTextView) {
-        [editorTextView setString:[data text]];
+    if (self.editorTextView) {
+        [self.editorTextView setString:[self.data text]];
     }
 }
 
 - (void)initializePreviewWebView
 {
-    if (previewView && !previewWebView) {
-        NSRect frame = [previewView frame];
+    if (self.previewView && !previewWebView) {
+        NSRect frame = [self.previewView frame];
         previewWebView = [[WebView alloc] initWithFrame:NSMakeRect(0, 0, frame.size.width, frame.size.height)];
         [previewWebView setUIDelegate:self];
         [previewWebView setFrameLoadDelegate:self];
         [previewWebView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
-        [previewView addSubview:previewWebView];
+        [self.previewView addSubview:previewWebView];
     }
     if (previewWebView) {
-        NSString *previewHtmlContent = renderer.html;
+        NSString *previewHtmlContent = self.renderer.html;
         [[previewWebView mainFrame] loadHTMLString:previewHtmlContent baseURL:nil];
     }
 }

@@ -18,8 +18,6 @@
 
 @implementation NPMData
 
-@synthesize text;
-
 #pragma mark NSObject
 
 - (id)init

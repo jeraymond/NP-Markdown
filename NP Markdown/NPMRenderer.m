@@ -19,9 +19,6 @@
 
 @implementation NPMRenderer
 
-@synthesize data;
-@synthesize html;
-
 #pragma mark NSObject
 
 - (id)init {
@@ -37,9 +34,9 @@
 {
     self = [super init];
     if (self) {
-        data = npmData;
+        self.data = npmData;
         // TODO: actually render the model data
-        html = [@"<h1>TODO: actually render the model data</h1>" stringByAppendingFormat:@"\n%@", data.text];
+        self.html = [@"<h1>TODO: actually render the model data</h1>" stringByAppendingFormat:@"\n%@", self.data.text];
     }
     return self;
 }

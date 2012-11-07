@@ -27,15 +27,6 @@
 
 @implementation NPMWindowController
 
-@synthesize data;
-@synthesize renderer;
-
-@synthesize viewSegmentedControl;
-@synthesize fileModeSegmentedControl;
-@synthesize bottomBorderTextField;
-
-@synthesize viewControllers;
-
 #pragma mark NSWindowController
 
 - (id)init
@@ -157,7 +148,7 @@
 - (void)updateBottomBorderText
 {
     // TODO: display file URL (if there is one)
-    [bottomBorderTextField setStringValue:@"NP Markdown"];
+    [self.bottomBorderTextField setStringValue:@"NP Markdown"];
 }
 
 @end
