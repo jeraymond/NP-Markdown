@@ -19,7 +19,7 @@
 #import "NPMData.h"
 #import "NPMRenderer.h"
 
-@implementation NPMDocument
+@implementation NPMDocument {}
 
 #pragma mark Document
 

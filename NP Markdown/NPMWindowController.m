@@ -18,14 +18,9 @@
 #import "NPMWindowController.h"
 #import "NPMViewController.h"
 
-@interface NPMWindowController ()
-{
+@implementation NPMWindowController {
     NPMViewController *currentViewController;
 }
-
-@end
-
-@implementation NPMWindowController
 
 #pragma mark NSWindowController
 

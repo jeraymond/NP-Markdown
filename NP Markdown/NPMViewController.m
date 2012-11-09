@@ -18,14 +18,11 @@
 #import "NPMViewController.h"
 #import "NPMData.h"
 #import "NPMRenderer.h"
+#import "NPMNotificationQueue.h"
 
-@interface NPMViewController () {
+@implementation NPMViewController {
     WebView *previewWebView;
 }
-
-@end
-
-@implementation NPMViewController
 
 #pragma mark NSViewController
 
@@ -41,18 +38,36 @@
 
 - (void)viewDidAppear
 {
-    [self initalizeEditorTextView];
+    [self initializeEditorTextView];
     [self initializePreviewWebView];
 }
 
-#pragma mark Internal
+#pragma mark Editor
 
-- (void)initalizeEditorTextView
+- (void)initializeEditorTextView
 {
     if (self.editorTextView) {
         [self.editorTextView setString:[self.data text]];
     }
 }
+
+/**
+ * NSTextDelegate callback for Editor text view changes.
+ * @param notification the notification
+ */
+- (void)textDidChange:(NSNotification *)notification
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateDataFromTextView) object:nil];
+    [self performSelector:@selector(updateDataFromTextView) withObject:nil afterDelay:0.25];
+}
+
+- (void)updateDataFromTextView
+{
+    NSString *newText = [[self.editorTextView textStorage] string];
+    self.data.text = newText;
+}
+
+#pragma mark Preview
 
 - (void)initializePreviewWebView
 {
@@ -64,10 +79,21 @@
         [previewWebView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
         [self.previewView addSubview:previewWebView];
     }
+    [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:) name:NPMNotificationRenderComplete];
+    [self updatePreview];
+}
+
+- (void)updatePreview
+{
     if (previewWebView) {
         NSString *previewHtmlContent = self.renderer.html;
         [[previewWebView mainFrame] loadHTMLString:previewHtmlContent baseURL:nil];
     }
+}
+
+- (void)updatePreviewFromNotification:(NSNotification *)notification
+{
+    [self updatePreview];
 }
 
 @end

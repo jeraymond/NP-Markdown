@@ -14,35 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#import "NPMData.h"
-#import "NPMNotificationQueue.h"
+#import <SenTestingKit/SenTestingKit.h>
 
-@implementation NPMData {
-    NSString *_text;
-}
-
-#pragma mark NSObject
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
-    return self;
-}
-
-#pragma mark Model
-
-- (void)setText:(NSString *)text
-{
-    _text = text;
-    [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationDataChanged];
-}
-
-- (NSString *)text
-{
-    return _text;
-}
+@interface NPMRendererTests : SenTestCase
 
 @end

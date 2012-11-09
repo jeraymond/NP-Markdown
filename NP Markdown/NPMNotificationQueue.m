@@ -14,35 +14,27 @@
  * limitations under the License.
  *******************************************************************************/
 
-#import "NPMData.h"
 #import "NPMNotificationQueue.h"
 
-@implementation NPMData {
-    NSString *_text;
-}
+@implementation NPMNotificationQueue {}
 
-#pragma mark NSObject
+#pragma mark NPMNotificationQueue
 
-- (id)init
++ (void)enqueueNotificationWithName:(NSString *)name
 {
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
-    return self;
+    NSNotification *notification = [NSNotification notificationWithName:name object:nil userInfo:nil];
+    [[NSNotificationQueue defaultQueue] enqueueNotification:notification postingStyle:NSPostNow coalesceMask:NSNotificationCoalescingOnName forModes:nil];
 }
 
-#pragma mark Model
-
-- (void)setText:(NSString *)text
++ (void)addObserver:(id)observer selector:(SEL)selector name:(NSString *)name
 {
-    _text = text;
-    [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationDataChanged];
+    [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:name object:nil];
 }
 
-- (NSString *)text
++ (void)removeObserver:(id)observer name:(NSString *)name
 {
-    return _text;
+    [[NSNotificationCenter defaultCenter] removeObserver:observer name:name object:nil];
 }
+
 
 @end

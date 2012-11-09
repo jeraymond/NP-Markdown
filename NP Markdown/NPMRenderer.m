@@ -16,8 +16,14 @@
 
 #import "NPMRenderer.h"
 #import "NPMData.h"
+#import "NPMNotificationQueue.h"
 
-@implementation NPMRenderer
+// Sundown
+#import "markdown.h"
+#import "html.h"
+#import "buffer.h"
+
+@implementation NPMRenderer {}
 
 #pragma mark NSObject
 
@@ -35,10 +41,60 @@
     self = [super init];
     if (self) {
         self.data = npmData;
-        // TODO: actually render the model data
-        self.html = [@"<h1>TODO: actually render the model data</h1>" stringByAppendingFormat:@"\n%@", self.data.text];
+        [NPMNotificationQueue addObserver:self selector:@selector(dataChanged:) name:NPMNotificationDataChanged];
+        [self render];
     }
     return self;
+}
+
+#pragma mark Internal
+
+- (void)dataChanged:(NSNotification *)notification
+{
+    [self render];
+}
+
+- (void)render
+{
+    NSString *markdown = self.data.text;
+    if (markdown && [markdown length] > 0) {
+        // Render markdown into html with Sundown library
+        const char *cString;
+        struct buf *inputBuffer;
+
+        // Copy markdown info input buffer
+        cString = [markdown UTF8String];
+        inputBuffer = bufnew(strlen(cString));
+        bufputs(inputBuffer, cString);
+
+        // Render
+        struct sd_callbacks callbacks;
+        struct html_renderopt options;
+        struct sd_markdown *sdMarkdown;
+        struct buf *outputBuffer;
+        int extensions = 0;
+
+        extensions |= MKDEXT_TABLES | MKDEXT_FENCED_CODE | MKDEXT_AUTOLINK | MKDEXT_STRIKETHROUGH | MKDEXT_SPACE_HEADERS | MKDEXT_SUPERSCRIPT;
+        outputBuffer = bufnew(64);
+        sdhtml_renderer(&callbacks, &options, 0);
+        sdMarkdown = sd_markdown_new(extensions, 16, &callbacks, &options);
+        sd_markdown_render(outputBuffer, inputBuffer->data, inputBuffer->size, sdMarkdown);
+        sd_markdown_free(sdMarkdown);
+
+        // Save rendered markdown
+        char *rendered;
+
+        rendered = malloc((sizeof *rendered) * (outputBuffer->size + 1));
+        memcpy(rendered, outputBuffer->data, outputBuffer->size);
+        *(rendered + outputBuffer->size) = '\0';
+        self.html = [[NSString alloc] initWithUTF8String:rendered];
+
+        // Clean up
+        free(rendered);
+        bufrelease(inputBuffer);
+        bufrelease(outputBuffer);
+    }
+    [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationRenderComplete];
 }
 
 @end

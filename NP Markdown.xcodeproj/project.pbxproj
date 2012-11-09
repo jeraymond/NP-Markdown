@@ -19,8 +19,10 @@
 		3F440A531641A83D001204AA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F440A521641A83D001204AA /* SenTestingKit.framework */; };
 		3F440A541641A83D001204AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F440A311641A83D001204AA /* Cocoa.framework */; };
 		3F440A5C1641A83D001204AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F440A5A1641A83D001204AA /* InfoPlist.strings */; };
-		3F440A5F1641A83D001204AA /* NP_MarkdownTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F440A5E1641A83D001204AA /* NP_MarkdownTests.m */; };
 		3F53BFD51641ABF300C65521 /* NPMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F53BFD41641ABF300C65521 /* NPMWindowController.m */; };
+		3F71A75E1649FEBB008003EF /* NPMNotificationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F71A75D1649FEBB008003EF /* NPMNotificationQueue.m */; };
+		3F71A762164B2330008003EF /* NPMDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F71A761164B2330008003EF /* NPMDataTests.m */; };
+		3F71A765164B4B7A008003EF /* NPMRendererTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F71A764164B4B7A008003EF /* NPMRendererTests.m */; };
 		3FE1DE351641BD4000E5F14D /* NPMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1DE341641BD4000E5F14D /* NPMViewController.m */; };
 		3FE1DE381641C2A500E5F14D /* NPMEditorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE1DE371641C2A500E5F14D /* NPMEditorView.xib */; };
 		3FE1DE3A1641C35F00E5F14D /* NPMPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE1DE391641C35F00E5F14D /* NPMPreviewView.xib */; };
@@ -36,6 +38,14 @@
 		3FE2232F16420B19006B95B4 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2232616420B19006B95B4 /* ContextFilterLogFormatter.m */; };
 		3FE2233016420B19006B95B4 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2232816420B19006B95B4 /* DispatchQueueLogFormatter.m */; };
 		3FE2233116420B19006B95B4 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FE2232916420B19006B95B4 /* README.txt */; };
+		3FF9B25A164C940D00C77C7D /* autolink.c in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9B24B164C940D00C77C7D /* autolink.c */; };
+		3FF9B25B164C940D00C77C7D /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9B24D164C940D00C77C7D /* buffer.c */; };
+		3FF9B25C164C940D00C77C7D /* houdini_href_e.c in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9B250164C940D00C77C7D /* houdini_href_e.c */; };
+		3FF9B25D164C940D00C77C7D /* houdini_html_e.c in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9B251164C940D00C77C7D /* houdini_html_e.c */; };
+		3FF9B25E164C940D00C77C7D /* html.c in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9B252164C940D00C77C7D /* html.c */; };
+		3FF9B25F164C940D00C77C7D /* html_smartypants.c in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9B255164C940D00C77C7D /* html_smartypants.c */; };
+		3FF9B260164C940D00C77C7D /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9B256164C940D00C77C7D /* markdown.c */; };
+		3FF9B261164C940D00C77C7D /* stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9B258164C940D00C77C7D /* stack.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,10 +80,14 @@
 		3F440A521641A83D001204AA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		3F440A591641A83D001204AA /* NP MarkdownTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NP MarkdownTests-Info.plist"; sourceTree = "<group>"; };
 		3F440A5B1641A83D001204AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3F440A5D1641A83D001204AA /* NP_MarkdownTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NP_MarkdownTests.h; sourceTree = "<group>"; };
-		3F440A5E1641A83D001204AA /* NP_MarkdownTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NP_MarkdownTests.m; sourceTree = "<group>"; };
 		3F53BFD31641ABF300C65521 /* NPMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMWindowController.h; sourceTree = "<group>"; };
 		3F53BFD41641ABF300C65521 /* NPMWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMWindowController.m; sourceTree = "<group>"; };
+		3F71A75C1649FEBB008003EF /* NPMNotificationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMNotificationQueue.h; sourceTree = "<group>"; };
+		3F71A75D1649FEBB008003EF /* NPMNotificationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMNotificationQueue.m; sourceTree = "<group>"; };
+		3F71A760164B2330008003EF /* NPMDataTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMDataTests.h; sourceTree = "<group>"; };
+		3F71A761164B2330008003EF /* NPMDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMDataTests.m; sourceTree = "<group>"; };
+		3F71A763164B4B7A008003EF /* NPMRendererTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMRendererTests.h; sourceTree = "<group>"; };
+		3F71A764164B4B7A008003EF /* NPMRendererTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMRendererTests.m; sourceTree = "<group>"; };
 		3FE1DE331641BD4000E5F14D /* NPMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMViewController.h; sourceTree = "<group>"; };
 		3FE1DE341641BD4000E5F14D /* NPMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMViewController.m; sourceTree = "<group>"; };
 		3FE1DE371641C2A500E5F14D /* NPMEditorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPMEditorView.xib; sourceTree = "<group>"; };
@@ -99,6 +113,21 @@
 		3FE2232816420B19006B95B4 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		3FE2232916420B19006B95B4 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		3FE2233216420C21006B95B4 /* NPMLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NPMLog.h; sourceTree = "<group>"; };
+		3FF9B24B164C940D00C77C7D /* autolink.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = autolink.c; sourceTree = "<group>"; };
+		3FF9B24C164C940D00C77C7D /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
+		3FF9B24D164C940D00C77C7D /* buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = buffer.c; sourceTree = "<group>"; };
+		3FF9B24E164C940D00C77C7D /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
+		3FF9B24F164C940D00C77C7D /* houdini.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = houdini.h; sourceTree = "<group>"; };
+		3FF9B250164C940D00C77C7D /* houdini_href_e.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = houdini_href_e.c; sourceTree = "<group>"; };
+		3FF9B251164C940D00C77C7D /* houdini_html_e.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = houdini_html_e.c; sourceTree = "<group>"; };
+		3FF9B252164C940D00C77C7D /* html.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = html.c; sourceTree = "<group>"; };
+		3FF9B253164C940D00C77C7D /* html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = html.h; sourceTree = "<group>"; };
+		3FF9B254164C940D00C77C7D /* html_blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = html_blocks.h; sourceTree = "<group>"; };
+		3FF9B255164C940D00C77C7D /* html_smartypants.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = html_smartypants.c; sourceTree = "<group>"; };
+		3FF9B256164C940D00C77C7D /* markdown.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = markdown.c; sourceTree = "<group>"; };
+		3FF9B257164C940D00C77C7D /* markdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = markdown.h; sourceTree = "<group>"; };
+		3FF9B258164C940D00C77C7D /* stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stack.c; sourceTree = "<group>"; };
+		3FF9B259164C940D00C77C7D /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +159,7 @@
 				3F440A371641A83D001204AA /* NP Markdown */,
 				3F440A571641A83D001204AA /* NP MarkdownTests */,
 				3FE2231916420B19006B95B4 /* Lumberjack */,
+				3FF9B24A164C940D00C77C7D /* Sundown */,
 				3F440A301641A83D001204AA /* Frameworks */,
 				3F440A2E1641A83D001204AA /* Products */,
 			);
@@ -183,6 +213,8 @@
 				3FE222FC1641D76C006B95B4 /* NPMData.m */,
 				3F2E28C21648BBBC0077E4EE /* NPMRenderer.h */,
 				3F2E28C31648BBBC0077E4EE /* NPMRenderer.m */,
+				3F71A75C1649FEBB008003EF /* NPMNotificationQueue.h */,
+				3F71A75D1649FEBB008003EF /* NPMNotificationQueue.m */,
 				3F440A381641A83D001204AA /* Supporting Files */,
 			);
 			path = "NP Markdown";
@@ -205,8 +237,10 @@
 		3F440A571641A83D001204AA /* NP MarkdownTests */ = {
 			isa = PBXGroup;
 			children = (
-				3F440A5D1641A83D001204AA /* NP_MarkdownTests.h */,
-				3F440A5E1641A83D001204AA /* NP_MarkdownTests.m */,
+				3F71A760164B2330008003EF /* NPMDataTests.h */,
+				3F71A761164B2330008003EF /* NPMDataTests.m */,
+				3F71A763164B4B7A008003EF /* NPMRendererTests.h */,
+				3F71A764164B4B7A008003EF /* NPMRendererTests.m */,
 				3F440A581641A83D001204AA /* Supporting Files */,
 			);
 			path = "NP MarkdownTests";
@@ -249,6 +283,28 @@
 				3FE2232916420B19006B95B4 /* README.txt */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3FF9B24A164C940D00C77C7D /* Sundown */ = {
+			isa = PBXGroup;
+			children = (
+				3FF9B24B164C940D00C77C7D /* autolink.c */,
+				3FF9B24C164C940D00C77C7D /* autolink.h */,
+				3FF9B24D164C940D00C77C7D /* buffer.c */,
+				3FF9B24E164C940D00C77C7D /* buffer.h */,
+				3FF9B24F164C940D00C77C7D /* houdini.h */,
+				3FF9B250164C940D00C77C7D /* houdini_href_e.c */,
+				3FF9B251164C940D00C77C7D /* houdini_html_e.c */,
+				3FF9B252164C940D00C77C7D /* html.c */,
+				3FF9B253164C940D00C77C7D /* html.h */,
+				3FF9B254164C940D00C77C7D /* html_blocks.h */,
+				3FF9B255164C940D00C77C7D /* html_smartypants.c */,
+				3FF9B256164C940D00C77C7D /* markdown.c */,
+				3FF9B257164C940D00C77C7D /* markdown.h */,
+				3FF9B258164C940D00C77C7D /* stack.c */,
+				3FF9B259164C940D00C77C7D /* stack.h */,
+			);
+			path = Sundown;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +436,15 @@
 				3FE2232F16420B19006B95B4 /* ContextFilterLogFormatter.m in Sources */,
 				3FE2233016420B19006B95B4 /* DispatchQueueLogFormatter.m in Sources */,
 				3F2E28C41648BBBC0077E4EE /* NPMRenderer.m in Sources */,
+				3F71A75E1649FEBB008003EF /* NPMNotificationQueue.m in Sources */,
+				3FF9B25A164C940D00C77C7D /* autolink.c in Sources */,
+				3FF9B25B164C940D00C77C7D /* buffer.c in Sources */,
+				3FF9B25C164C940D00C77C7D /* houdini_href_e.c in Sources */,
+				3FF9B25D164C940D00C77C7D /* houdini_html_e.c in Sources */,
+				3FF9B25E164C940D00C77C7D /* html.c in Sources */,
+				3FF9B25F164C940D00C77C7D /* html_smartypants.c in Sources */,
+				3FF9B260164C940D00C77C7D /* markdown.c in Sources */,
+				3FF9B261164C940D00C77C7D /* stack.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +452,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F440A5F1641A83D001204AA /* NP_MarkdownTests.m in Sources */,
+				3F71A762164B2330008003EF /* NPMDataTests.m in Sources */,
+				3F71A765164B4B7A008003EF /* NPMRendererTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -81,7 +81,7 @@
 														<string key="NSFrameSize">{242, 272}</string>
 														<reference key="NSSuperview" ref="252660550"/>
 														<reference key="NSWindow"/>
-														<reference key="NSNextKeyView" ref="931498225"/>
+														<reference key="NSNextKeyView" ref="564161489"/>
 														<string key="NSReuseIdentifierKey">_NS:13</string>
 														<object class="NSTextContainer" key="NSTextContainer" id="954976031">
 															<object class="NSLayoutManager" key="NSLayoutManager">
@@ -345,7 +345,7 @@ wGw</bytes>
 										<string key="NSFrameSize">{242, 272}</string>
 										<reference key="NSSuperview" ref="556496555"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="564161489"/>
+										<reference key="NSNextKeyView" ref="252660550"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<int key="NSsFlags">133136</int>
 										<reference key="NSVScroller" ref="931498225"/>
@@ -414,6 +414,14 @@ wGw</bytes>
 						<reference key="destination" ref="937761110"/>
 					</object>
 					<int key="connectionID">28</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="1038893805"/>
+						<reference key="destination" ref="1001"/>
+					</object>
+					<int key="connectionID">29</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -706,7 +714,7 @@ wGw</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">28</int>
+			<int key="maxID">29</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
