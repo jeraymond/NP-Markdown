@@ -22,8 +22,10 @@
 
 + (void)enqueueNotificationWithName:(NSString *)name
 {
-    NSNotification *notification = [NSNotification notificationWithName:name object:nil userInfo:nil];
-    [[NSNotificationQueue defaultQueue] enqueueNotification:notification postingStyle:NSPostNow coalesceMask:NSNotificationCoalescingOnName forModes:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSNotification *notification = [NSNotification notificationWithName:name object:nil userInfo:nil];
+        [[NSNotificationQueue defaultQueue] enqueueNotification:notification postingStyle:NSPostNow coalesceMask:NSNotificationCoalescingOnName forModes:nil];
+    });
 }
 
 + (void)addObserver:(id)observer selector:(SEL)selector name:(NSString *)name

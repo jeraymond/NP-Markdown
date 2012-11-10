@@ -32,7 +32,7 @@ static NSString * const NPMNotificationRenderComplete = @"NPMNotificationRenderC
 @interface NPMNotificationQueue : NSObject
 
 /**
-  Enqueues a notification with the given name.
+  Enqueues a notification with the given name on the main thread.
   @param name the notification name.
  */
 + (void)enqueueNotificationWithName:(NSString *)name;

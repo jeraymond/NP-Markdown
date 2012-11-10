@@ -36,13 +36,17 @@
 
 - (void)setText:(NSString *)text
 {
-    _text = text;
+    @synchronized(self) {
+        _text = text;
+    }
     [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationDataChanged];
 }
 
 - (NSString *)text
 {
-    return _text;
+    @synchronized(self) {
+        return _text;
+    }
 }
 
 @end

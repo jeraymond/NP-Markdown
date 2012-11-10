@@ -31,7 +31,7 @@
 /**
   The most recent rendered data.
  */
-@property (strong) NSString *html;
+@property (readonly) NSString *html;
 
 /**
   Initialize the renderer with the given data.
