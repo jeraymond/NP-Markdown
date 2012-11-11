@@ -39,7 +39,7 @@
     @synchronized(self) {
         _text = text;
     }
-    [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationDataChanged];
+    [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationDataChanged object:self];
 }
 
 - (NSString *)text

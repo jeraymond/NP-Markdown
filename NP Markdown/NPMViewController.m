@@ -57,8 +57,7 @@
  */
 - (void)textDidChange:(NSNotification *)notification
 {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateDataFromTextView) object:nil];
-    [self performSelector:@selector(updateDataFromTextView) withObject:nil afterDelay:0.25];
+    [self updateDataFromTextView];
 }
 
 - (void)updateDataFromTextView
@@ -79,7 +78,7 @@
         [previewWebView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
         [self.previewView addSubview:previewWebView];
     }
-    [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:) name:NPMNotificationRenderComplete];
+    [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:) name:NPMNotificationRenderComplete object:self.renderer];
     [self updatePreview];
 }
 

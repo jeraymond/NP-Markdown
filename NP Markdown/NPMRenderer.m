@@ -46,7 +46,7 @@
     self = [super init];
     if (self) {
         self.data = npmData;
-        [NPMNotificationQueue addObserver:self selector:@selector(dataChanged:) name:NPMNotificationDataChanged];
+        [NPMNotificationQueue addObserver:self selector:@selector(dataChanged:) name:NPMNotificationDataChanged object:self.data];
         [self render];
     }
     return self;
@@ -132,7 +132,7 @@
                 _html = @"";
             }
         }
-        [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationRenderComplete];
+        [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationRenderComplete object:self];
 
         @synchronized(self) {
             DDLogInfo(@"Render complete");

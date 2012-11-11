@@ -33,23 +33,26 @@ static NSString * const NPMNotificationRenderComplete = @"NPMNotificationRenderC
 
 /**
   Enqueues a notification with the given name on the main thread.
-  @param name the notification name.
+  @param name the notification name
+  @param object the object for the notification
  */
-+ (void)enqueueNotificationWithName:(NSString *)name;
++ (void)enqueueNotificationWithName:(NSString *)name object:(NSObject *)object;
 
 /**
   Adds an observer to the notification center.
   @param observer the observer
   @param selector the selector to invoke on notification
   @param name the notification name
+  @object object the sender
  */
-+ (void)addObserver:(id)observer selector:(SEL)selector name:(NSString *)name;
++ (void)addObserver:(id)observer selector:(SEL)selector name:(NSString *)name object:(NSObject *)object;
 
 /**
   Removes an observer from the notification center.
   @param observer the observer to remove
   @param name the name of the notification from which to be removed
+  @param object the sender
  */
-+ (void)removeObserver:(id)observer name:(NSString *)name;
++ (void)removeObserver:(id)observer name:(NSString *)name object:(NSObject *)object;
 
 @end

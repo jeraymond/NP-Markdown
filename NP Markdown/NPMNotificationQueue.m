@@ -20,22 +20,22 @@
 
 #pragma mark NPMNotificationQueue
 
-+ (void)enqueueNotificationWithName:(NSString *)name
++ (void)enqueueNotificationWithName:(NSString *)name object:(NSObject *)object
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSNotification *notification = [NSNotification notificationWithName:name object:nil userInfo:nil];
+        NSNotification *notification = [NSNotification notificationWithName:name object:object userInfo:nil];
         [[NSNotificationQueue defaultQueue] enqueueNotification:notification postingStyle:NSPostNow coalesceMask:NSNotificationCoalescingOnName forModes:nil];
     });
 }
 
-+ (void)addObserver:(id)observer selector:(SEL)selector name:(NSString *)name
++ (void)addObserver:(id)observer selector:(SEL)selector name:(NSString *)name object:(NSObject *)object
 {
-    [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:name object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:observer selector:selector name:name object:object];
 }
 
-+ (void)removeObserver:(id)observer name:(NSString *)name
++ (void)removeObserver:(id)observer name:(NSString *)name object:(NSObject *)object
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:observer name:name object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:observer name:name object:object];
 }
 
 
