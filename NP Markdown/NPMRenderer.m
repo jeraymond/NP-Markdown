@@ -17,6 +17,7 @@
 #import "NPMRenderer.h"
 #import "NPMData.h"
 #import "NPMNotificationQueue.h"
+#import "NPMLog.h"
 
 // Sundown
 #import "markdown.h"
@@ -25,6 +26,8 @@
 
 @implementation NPMRenderer {
     NSString *_html;
+    BOOL renderNeeded;
+    BOOL renderInProgress;
 }
 
 #pragma mark NSObject
@@ -68,12 +71,26 @@
 
 - (void)render
 {
+    @synchronized(self) {
+        if (renderNeeded) {
+            DDLogInfo(@"Render already queued, request ignored");
+            return;
+        } else if (renderInProgress) {
+            DDLogInfo(@"Render in progress, queued render request");
+            renderNeeded = YES;
+            return;
+        } else {
+            renderInProgress = YES;
+        }
+    }
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 
     dispatch_async(queue, ^{
+        DDLogInfo(@"Rendering");
         NSString *markdown = self.data.text;
+
+        // Render markdown into html with Sundown library
         if (markdown && [markdown length] > 0) {
-            // Render markdown into html with Sundown library
             const char *cString;
             struct buf *inputBuffer;
 
@@ -112,6 +129,16 @@
             bufrelease(outputBuffer);
         }
         [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationRenderComplete];
+
+        @synchronized(self) {
+            DDLogInfo(@"Render complete");
+            renderInProgress = NO;
+            if (renderNeeded) {
+                DDLogInfo(@"Queued render detected");
+                renderNeeded = NO;
+                [self render];
+            }
+        }
     });
 }
 
