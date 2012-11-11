@@ -127,6 +127,10 @@
             free(rendered);
             bufrelease(inputBuffer);
             bufrelease(outputBuffer);
+        } else {
+            @synchronized(self) {
+                _html = @"";
+            }
         }
         [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationRenderComplete];
 
