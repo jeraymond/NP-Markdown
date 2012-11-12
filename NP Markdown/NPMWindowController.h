@@ -54,9 +54,9 @@
 @property (strong) IBOutlet NSSegmentedControl *fileModeSegmentedControl;
 
 /**
-  The display text field in the bottom border.
+  The display text field in the footer.
  */
-@property (strong) IBOutlet NSTextField *bottomBorderTextField;
+@property (strong) IBOutlet NSTextField *footerTextField;
 
 /**
   The view controllers for the main view.

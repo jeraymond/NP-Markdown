@@ -62,7 +62,7 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    [self updateBottomBorderText];
+    [self updateFooterText];
     NPMViewController *initialViewController = [self viewControllerForViewName:@"NPMSplitView"];
     [self activateViewController:initialViewController];
 
@@ -109,7 +109,7 @@
 
 - (void)dataSaved:(NSNotification *)notification
 {
-    [self updateBottomBorderText];
+    [self updateFooterText];
 }
 
 #pragma mark Internal
@@ -215,13 +215,13 @@
     }
 }
 
-- (void)updateBottomBorderText
+- (void)updateFooterText
 {
-    NSString *bottomBorderText = @"NP Markdown";
+    NSString *footerText = @"NP Markdown";
     if (self.data.url) {
-        bottomBorderText = [self.data.url path];
+        footerText = [self.data.url path];
     }
-    [self.bottomBorderTextField setStringValue:bottomBorderText];
+    [self.footerTextField setStringValue:footerText];
 }
 
 @end
