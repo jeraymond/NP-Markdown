@@ -20,6 +20,7 @@
 		3F440A541641A83D001204AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F440A311641A83D001204AA /* Cocoa.framework */; };
 		3F440A5C1641A83D001204AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F440A5A1641A83D001204AA /* InfoPlist.strings */; };
 		3F53BFD51641ABF300C65521 /* NPMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F53BFD41641ABF300C65521 /* NPMWindowController.m */; };
+		3F60FB6616513FA800D68FF5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3F60FB6516513FA800D68FF5 /* README.md */; };
 		3F71A75E1649FEBB008003EF /* NPMNotificationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F71A75D1649FEBB008003EF /* NPMNotificationQueue.m */; };
 		3F71A762164B2330008003EF /* NPMDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F71A761164B2330008003EF /* NPMDataTests.m */; };
 		3F71A765164B4B7A008003EF /* NPMRendererTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F71A764164B4B7A008003EF /* NPMRendererTests.m */; };
@@ -82,6 +83,7 @@
 		3F440A5B1641A83D001204AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F53BFD31641ABF300C65521 /* NPMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMWindowController.h; sourceTree = "<group>"; };
 		3F53BFD41641ABF300C65521 /* NPMWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMWindowController.m; sourceTree = "<group>"; };
+		3F60FB6516513FA800D68FF5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3F71A75C1649FEBB008003EF /* NPMNotificationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMNotificationQueue.h; sourceTree = "<group>"; };
 		3F71A75D1649FEBB008003EF /* NPMNotificationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMNotificationQueue.m; sourceTree = "<group>"; };
 		3F71A760164B2330008003EF /* NPMDataTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMDataTests.h; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		3F440A221641A83D001204AA = {
 			isa = PBXGroup;
 			children = (
+				3F60FB6516513FA800D68FF5 /* README.md */,
 				3F2E28BF1648B6360077E4EE /* WebKit.framework */,
 				3F440A371641A83D001204AA /* NP Markdown */,
 				3F440A571641A83D001204AA /* NP MarkdownTests */,
@@ -389,6 +392,7 @@
 				3FE222EA1641C98F006B95B4 /* EditTemplate.png in Resources */,
 				3FE222F91641CB9B006B95B4 /* NP Markdown.icns in Resources */,
 				3FE2233116420B19006B95B4 /* README.txt in Resources */,
+				3F60FB6616513FA800D68FF5 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

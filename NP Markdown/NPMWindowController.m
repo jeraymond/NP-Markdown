@@ -47,11 +47,23 @@
 {
     if (sender == self.viewSegmentedControl) {
         NSInteger viewType = [sender selectedSegment];
-        NSString *viewName = [NPMWindowController viewNameFromViewType:viewType];
-        NPMViewController *newViewController = [self viewControllerForViewName:viewName];
-        [self activateViewController:newViewController];
-        DDLogInfo(@"View selection changed to %@", viewName);
+        [self activateViewForType:viewType];
     }
+}
+
+- (IBAction)viewSelectionDidChangeViaMenuToEditor:(id)sender
+{
+    [self activateViewForType:0];
+}
+
+- (IBAction)viewSelectionDidChangeViaMenuToSplit:(id)sender
+{
+    [self activateViewForType:1];
+}
+
+- (IBAction)viewSelectionDidChangeViaMenuToPreview:(id)sender
+{
+    [self activateViewForType:2];
 }
 
 - (IBAction)fileModeSelectionDidChange:(id)sender
@@ -117,6 +129,19 @@
     controller.data = self.data;
     controller.renderer = self.renderer;
     return controller;
+}
+
+/**
+  Activates the view for the given view type. Sets control properties in the view as appropriate.
+  @param viewType the view type
+ */
+- (void)activateViewForType:(NSInteger)viewType
+{
+    [self.viewSegmentedControl setSelectedSegment:viewType];
+    NSString *viewName = [NPMWindowController viewNameFromViewType:viewType];
+    NPMViewController *newViewController = [self viewControllerForViewName:viewName];
+    [self activateViewController:newViewController];
+    DDLogInfo(@"View selection changed to %@", viewName);
 }
 
 - (void)activateViewController:(NPMViewController *)viewController

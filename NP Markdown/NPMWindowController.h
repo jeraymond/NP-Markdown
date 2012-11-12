@@ -57,14 +57,30 @@
 
 /**
   Notify the window controller that the view selection has changed.
- 
   @param sender the view segmented control
  */
 - (IBAction)viewSelectionDidChange:(id)sender;
 
 /**
+  Notify the window controller that the view selection has changed to Editor via the menu.
+  @param sender the menu item that changed the view
+ */
+- (IBAction)viewSelectionDidChangeViaMenuToEditor:(id)sender;
+
+/**
+ Notify the window controller that the view selection has changed to Split via the menu.
+ @param sender the menu item that changed the view
+ */
+- (IBAction)viewSelectionDidChangeViaMenuToSplit:(id)sender;
+
+/**
+ Notify the window controller that the view selection has changed to Preview via the menu.
+ @param sender the menu item that changed the view
+ */
+- (IBAction)viewSelectionDidChangeViaMenuToPreview:(id)sender;
+
+/**
   Notify the window controller that the file mode selection has changed.
- 
   @param sender the file mode segmented control
  */
 - (IBAction)fileModeSelectionDidChange:(id)sender;
