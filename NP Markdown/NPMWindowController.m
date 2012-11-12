@@ -20,6 +20,17 @@
 
 @implementation NPMWindowController {
     NPMViewController *currentViewController;
+
+    enum ViewType {
+        EDITOR,
+        SPLIT,
+        PREVIEW
+    };
+
+    enum FileMode {
+        EDIT,
+        WATCH
+    };
 }
 
 #pragma mark NSWindowController
@@ -53,17 +64,17 @@
 
 - (IBAction)viewSelectionDidChangeViaMenuToEditor:(id)sender
 {
-    [self activateViewForType:0];
+    [self activateViewForType:EDITOR];
 }
 
 - (IBAction)viewSelectionDidChangeViaMenuToSplit:(id)sender
 {
-    [self activateViewForType:1];
+    [self activateViewForType:SPLIT];
 }
 
 - (IBAction)viewSelectionDidChangeViaMenuToPreview:(id)sender
 {
-    [self activateViewForType:2];
+    [self activateViewForType:PREVIEW];
 }
 
 - (IBAction)fileModeSelectionDidChange:(id)sender
@@ -77,42 +88,50 @@
 
 #pragma mark Internal
 
+/**
+  Gets the file mode string from the file mode type.
+  @param fileMode the file mode, one of enum FileMode
+  @return the file mode string or nil if the file mode is invalid
+ */
 + (NSString *)fileModeStringFromFileMode:(NSInteger)fileMode
 {
-    NSString *string;
+    NSString *string = nil;
 
     switch (fileMode) {
-        case 0:
+        case EDIT:
             string = @"Edit";
             break;
-        case 1:
+        case WATCH:
             string = @"Watch";
             break;
         default:
-            string = [NSString stringWithFormat:@"Unrecognized file mode %ld", fileMode];
-            DDLogError(@"%@", string);
+            DDLogError(@"%@", [NSString stringWithFormat:@"Unrecognized file mode %ld", fileMode]);
             break;
     }
     return string;
 }
 
+/**
+  Gets the view name from a view type.
+  @param viewType the view type, one of enum ViewType
+  @return the view name or nil if the view type is invalid
+ */
 + (NSString *)viewNameFromViewType:(NSInteger)viewType
 {
-    NSString *string;
+    NSString *string = nil;
 
     switch (viewType) {
-        case 0:
+        case EDITOR:
             string = @"NPMEditorView";
             break;
-        case 1:
+        case SPLIT:
             string = @"NPMSplitView";
             break;
-        case 2:
+        case PREVIEW:
             string = @"NPMPreviewView";
             break;
         default:
-            string = [NSString stringWithFormat:@"Unrecognized view type %ld", viewType];
-            DDLogError(@"%@", string);
+            DDLogError(@"%@", [NSString stringWithFormat:@"Unrecognized view type %ld", viewType]);
             break;
     }
     return string;
@@ -133,7 +152,7 @@
 
 /**
   Activates the view for the given view type. Sets control properties in the view as appropriate.
-  @param viewType the view type
+  @param viewType the view type, one of enum ViewType
  */
 - (void)activateViewForType:(NSInteger)viewType
 {
