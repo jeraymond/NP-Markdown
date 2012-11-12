@@ -177,7 +177,8 @@
 }
 
 /**
-  Activates the view for the given view type. Sets control properties in the view as appropriate.
+  Activates the view for the given view type.
+  Sets control properties in the view as appropriate.
   @param viewType the view type, one of enum ViewType
  */
 - (void)activateViewForType:(NSInteger)viewType
@@ -204,10 +205,14 @@
     // Add view to content view
     if (currentViewController != nil) {
         [currentViewController.view removeFromSuperview];
+        [currentViewController viewDidDisappear];
     }
     currentViewController = viewController;
     [[self.window contentView] addSubview:view];
     [viewController viewDidAppear];
+    if (viewController.editorTextView) {
+        [self.window makeFirstResponder:viewController.editorTextView];
+    }
 }
 
 - (void)updateBottomBorderText

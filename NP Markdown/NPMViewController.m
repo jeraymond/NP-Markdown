@@ -40,7 +40,26 @@
 {
     [self initializeEditorTextView];
     [self initializePreviewWebView];
+    [self setupNotifications];
 }
+
+- (void)viewDidDisappear
+{
+    [self teardownNotifications];
+}
+
+#pragma mark Notifications
+
+- (void)setupNotifications
+{
+    [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:) name:NPMNotificationRenderComplete object:self.renderer];
+}
+
+- (void)teardownNotifications
+{
+    [NPMNotificationQueue removeObserver:self name:NPMNotificationRenderComplete object:self.renderer];
+}
+
 
 #pragma mark Editor
 
@@ -76,10 +95,11 @@
         [previewWebView setUIDelegate:self];
         [previewWebView setFrameLoadDelegate:self];
         [previewWebView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
-        [self.previewView addSubview:previewWebView];
     }
-    [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:) name:NPMNotificationRenderComplete object:self.renderer];
-    [self updatePreview];
+    if (self.previewView && previewWebView) {
+        [self.previewView addSubview:previewWebView];
+        [self updatePreview];
+    }
 }
 
 - (void)updatePreview

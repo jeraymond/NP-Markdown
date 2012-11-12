@@ -41,17 +41,19 @@
 @property (strong) IBOutlet NSTextView *editorTextView;
 
 /**
-  The preview view. The preview content is a subview of this view.
+  The preview view. 
+  The preview content is a subview of this view.
  */
 @property (strong) IBOutlet NSView *previewView;
 
 /**
   Notify the view controller that its view was added to a view hierarchy.
-
-  Note that unlike the viewDidAppear method in the iOS UIViewController class
-  this method is not called automatically in Cocoa. The window controller must
-  call this method explicitly.
  */
 - (void)viewDidAppear;
+
+/**
+  Notify the view controller that its view was removed from the view hierarchy.
+ */
+- (void)viewDidDisappear;
 
 @end
