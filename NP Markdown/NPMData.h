@@ -28,4 +28,9 @@
  */
 @property (strong) NSString *text;
 
+/**
+  The URL of the model data. May be nil if the data has not been previously saved.
+ */
+@property (strong) NSURL *url;
+
 @end

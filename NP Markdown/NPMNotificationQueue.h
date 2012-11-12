@@ -22,6 +22,11 @@
 static NSString * const NPMNotificationDataChanged = @"NPMNotificationDataChanged";
 
 /**
+ The notification that indicates the model data has been saved.
+ */
+static NSString * const NPMNotificationDataSaved = @"NPMNotificationDataSaved";
+
+/**
   The notification that indicates the model data has been rendered.
  */
 static NSString * const NPMNotificationRenderComplete = @"NPMNotificationRenderComplete";

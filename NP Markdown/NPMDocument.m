@@ -19,6 +19,7 @@
 #import "NPMData.h"
 #import "NPMRenderer.h"
 #import "NPMLog.h"
+#import "NPMNotificationQueue.h"
 
 @implementation NPMDocument {}
 
@@ -36,9 +37,7 @@
 
 - (void)makeWindowControllers
 {
-    NPMWindowController *windowController = [[NPMWindowController alloc] init];
-    windowController.data = self.data;
-    windowController.renderer = self.renderer;
+    NPMWindowController *windowController = [[NPMWindowController alloc] initWithData:self.data andRenderer:self.renderer];
     [self addWindowController:windowController];
 }
 
@@ -52,7 +51,10 @@
     NSString *text = self.data.text;
     if (text && text.length > 0) {
         BOOL success = [text writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:outError];
-        if (!success) {
+        if (success) {
+            self.data.url = self.fileURL;
+            [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationDataSaved object:self.data];
+        } else {
             DDLogError(@"Error saving to %@: %@", [url absoluteString], [*outError localizedDescription]);
         }
         return success;
@@ -72,6 +74,7 @@
     NSString *text = [[NSString alloc] initWithContentsOfURL:url usedEncoding:&encoding error:outError];
     if (text) {
         self.data.text = text;
+        self.data.url = self.fileURL;
         return YES;
     }
     DDLogError(@"Error reading from %@: %@", [url absoluteString], [*outError localizedDescription]);

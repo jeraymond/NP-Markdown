@@ -40,9 +40,9 @@
 
 /**
   Initialize the renderer with the given data.
-  @param npmData the data
+  @param data the data
   @return the renderer or nil
  */
-- (id)initWithData:(NPMData *)npmData;
+- (id)initWithData:(NPMData *)data;
 
 @end

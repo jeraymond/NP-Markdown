@@ -26,6 +26,14 @@
 @interface NPMWindowController : NSWindowController
 
 /**
+ Initialize the window with the given data and renderer
+ @param data the data
+ @param render the renderer
+ @return the window controller or nil on error
+ */
+- (id)initWithData:(NPMData *)data andRenderer:(NPMRenderer *)renderer;
+
+/**
   The model data.
  */
 @property (strong) NPMData *data;

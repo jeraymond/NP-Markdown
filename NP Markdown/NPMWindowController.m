@@ -17,6 +17,8 @@
 #import "NPMLog.h"
 #import "NPMWindowController.h"
 #import "NPMViewController.h"
+#import "NPMData.h"
+#import "NPMNotificationQueue.h"
 
 @implementation NPMWindowController {
     NPMViewController *currentViewController;
@@ -33,16 +35,29 @@
     };
 }
 
-#pragma mark NSWindowController
+#pragma mark Init
 
 - (id)init
+{
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:@"-init is not a valid initializer for the class NPMWindowController"
+                                 userInfo:nil];
+    return nil;
+}
+
+- (id)initWithData:(NPMData *)data andRenderer:(NPMRenderer *)renderer
 {
     self = [super initWithWindowNibName:@"NPMDocument"];
     if (self) {
         self.viewControllers = [NSMutableDictionary dictionary];
+        self.data = data;
+        self.renderer = renderer;
+        [NPMNotificationQueue addObserver:self selector:@selector(dataSaved:) name:NPMNotificationDataSaved object:self.data];
     }
     return self;
 }
+
+#pragma NSWindowController
 
 - (void)windowDidLoad
 {
@@ -84,6 +99,13 @@
         NSString *fileModeString = [NPMWindowController fileModeStringFromFileMode:fileMode];
         DDLogInfo(@"File mode selection changed to %@", fileModeString);
     }
+}
+
+#pragma mark Notifications
+
+- (void)dataSaved:(NSNotification *)notification
+{
+    [self updateBottomBorderText];
 }
 
 #pragma mark Internal
@@ -186,8 +208,11 @@
 
 - (void)updateBottomBorderText
 {
-    // TODO: display file URL (if there is one)
-    [self.bottomBorderTextField setStringValue:@"NP Markdown"];
+    NSString *bottomBorderText = @"NP Markdown";
+    if (self.data.url) {
+        bottomBorderText = [self.data.url path];
+    }
+    [self.bottomBorderTextField setStringValue:bottomBorderText];
 }
 
 @end

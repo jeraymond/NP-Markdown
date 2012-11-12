@@ -30,22 +30,21 @@
     BOOL renderInProgress;
 }
 
-#pragma mark NSObject
+#pragma mark Init
 
-- (id)init {
+- (id)init
+{
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                    reason:@"-init is not a valid initializer for the class NPMRenderer"
                                  userInfo:nil];
     return nil;
 }
 
-#pragma mark Init
-
-- (id)initWithData:(NPMData *)npmData
+- (id)initWithData:(NPMData *)data
 {
     self = [super init];
     if (self) {
-        self.data = npmData;
+        self.data = data;
         [NPMNotificationQueue addObserver:self selector:@selector(dataChanged:) name:NPMNotificationDataChanged object:self.data];
         [self render];
     }
