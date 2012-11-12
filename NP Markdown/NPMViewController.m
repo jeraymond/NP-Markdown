@@ -46,7 +46,7 @@
 
 - (void)initializeEditorTextView
 {
-    if (self.editorTextView) {
+    if (self.editorTextView && self.data && self.data.text) {
         [self.editorTextView setString:[self.data text]];
     }
 }

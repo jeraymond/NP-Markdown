@@ -18,6 +18,7 @@
 #import "NPMWindowController.h"
 #import "NPMData.h"
 #import "NPMRenderer.h"
+#import "NPMLog.h"
 
 @implementation NPMDocument {}
 
@@ -28,7 +29,6 @@
     self = [super init];
     if (self) {
         self.data = [[NPMData alloc] init];
-        self.data.text = @"# TODO: load data from elsewhere"; // TODO
         self.renderer = [[NPMRenderer alloc] initWithData:self.data];
     }
     return self;
@@ -47,23 +47,35 @@
     return NO;
 }
 
-- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
+- (BOOL)writeToURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
 {
-    // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
-    // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
-    return nil;
+    NSString *text = self.data.text;
+    if (text && text.length > 0) {
+        BOOL success = [text writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:outError];
+        if (!success) {
+            DDLogError(@"Error saving to %@: %@", [url absoluteString], [*outError localizedDescription]);
+        }
+        return success;
+    }
+    // TODO: localized error message
+    NSMutableDictionary *errorUserInfo = [[NSMutableDictionary alloc] init];
+    NSString *errorDescription = @"The document is empty.";
+    [errorUserInfo setObject:errorDescription forKey:NSLocalizedDescriptionKey];
+    [errorUserInfo setObject:errorDescription forKey:NSLocalizedFailureReasonErrorKey];
+    *outError = [NSError errorWithDomain:@"NPMErrorDomain" code:0 userInfo:errorUserInfo];
+    return NO;
 }
 
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
+- (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
 {
-    // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
-    // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
-    // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
-    return YES;
+    NSStringEncoding encoding;
+    NSString *text = [[NSString alloc] initWithContentsOfURL:url usedEncoding:&encoding error:outError];
+    if (text) {
+        self.data.text = text;
+        return YES;
+    }
+    DDLogError(@"Error reading from %@: %@", [url absoluteString], [*outError localizedDescription]);
+    return NO;
 }
 
 @end
