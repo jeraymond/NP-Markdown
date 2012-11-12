@@ -65,6 +65,10 @@
     [self updateBottomBorderText];
     NPMViewController *initialViewController = [self viewControllerForViewName:@"NPMSplitView"];
     [self activateViewController:initialViewController];
+
+    // Set default view mode and file mode
+    [self.fileModeSegmentedControl setSelectedSegment:EDIT];
+    [self.viewSegmentedControl setSelectedSegment:SPLIT];
 }
 
 #pragma mark Selectors
