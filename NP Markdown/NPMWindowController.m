@@ -19,9 +19,12 @@
 #import "NPMViewController.h"
 #import "NPMData.h"
 #import "NPMNotificationQueue.h"
+#import "NPMDocument.h"
 
 @implementation NPMWindowController {
-    NPMViewController *currentViewController;
+    NPMViewController *_currentViewController;
+
+    enum FileMode _currentFileMode;
 
     enum ViewType {
         EDITOR,
@@ -29,10 +32,6 @@
         PREVIEW
     };
 
-    enum FileMode {
-        EDIT,
-        WATCH
-    };
 }
 
 #pragma mark Init
@@ -63,12 +62,12 @@
 {
     [super windowDidLoad];
     [self updateFooterText];
-    NPMViewController *initialViewController = [self viewControllerForViewName:@"NPMSplitView"];
-    [self activateViewController:initialViewController];
-
-    // Set default view mode and file mode
     [self.fileModeSegmentedControl setSelectedSegment:EDIT];
     [self.viewSegmentedControl setSelectedSegment:SPLIT];
+    [self activateViewForType:SPLIT];
+    if (_currentViewController.editorTextView) {
+        [self.window performSelector:@selector(makeFirstResponder:) withObject:_currentViewController.editorTextView afterDelay:0.0];
+    }
 }
 
 #pragma mark Selectors
@@ -100,9 +99,111 @@
 {
     if (sender == self.fileModeSegmentedControl) {
         NSInteger fileMode = [sender selectedSegment];
-        NSString *fileModeString = [NPMWindowController fileModeStringFromFileMode:fileMode];
-        DDLogInfo(@"File mode selection changed to %@", fileModeString);
+        switch (fileMode) {
+            case EDIT:
+                [self enableEditMode];
+                break;
+            case WATCH:
+                [self enableWatchMode];
+                break;
+            default:
+                DDLogError(@"Invalid file mode %ld", fileMode);
+                break;
+        }
     }
+}
+
+# pragma mark File Mode
+
+- (void)enableEditMode
+{
+    if (_currentFileMode == EDIT) {
+        return;
+    }
+    
+    DDLogInfo(@"File mode changed to edit");
+    _currentFileMode = EDIT;
+    [self activateViewForType:SPLIT]; // TODO: restore previous view
+    [self.viewSegmentedControl setEnabled:YES];
+    [self updateFooterText];
+    [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationChangeFileModeToEdit object:self];
+}
+
+- (void)enableWatchMode
+{
+    if (_currentFileMode == WATCH) {
+        return;
+    }
+
+    if ([[self document] isDocumentEdited] || !self.data.url) {
+        [self askForSaveBeforeWatch];
+        [self.fileModeSegmentedControl setSelectedSegment:EDIT];
+        return;
+    }
+
+    DDLogInfo(@"File mode changed to watch");
+    _currentFileMode = WATCH;
+    [self.fileModeSegmentedControl setSelectedSegment:WATCH];
+    [self activateViewForType:PREVIEW]; // TODO: store previous view
+    [self.viewSegmentedControl setEnabled:NO];
+    [self updateFooterText];
+    [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationChangeFileModeToWatch object:self];
+}
+
+- (void)askForSaveBeforeWatch
+{
+    NSString *question = @"Do you want to save the changes you made before watching the file for changes?";
+    NSString *info = @"";
+
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:question];
+    [alert setInformativeText:info];
+    [alert addButtonWithTitle:@"Save"];
+    [alert addButtonWithTitle:@"Cancel"];
+    if (self.data.url) {
+        [alert addButtonWithTitle:@"Don't Save"];
+    }
+    [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(alertForSaveBeforeWatchDidEnd:returnCode:contextInfo:) contextInfo:nil];
+}
+
+- (void) alertForSaveBeforeWatchDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+    [[alert window] orderOut:alert];
+    if (returnCode == NSAlertFirstButtonReturn) {
+        [[self document] saveDocumentWithDelegate:self didSaveSelector:@selector(documentForWatch:didSave:contextInfo:) contextInfo:NULL];
+        DDLogInfo(@"Saving before watch");
+    } else if (returnCode == NSAlertSecondButtonReturn) {
+        DDLogInfo(@"Cancel watch");
+    } else {
+        NSError *error;
+        if ([[self document] revertToContentsOfURL:self.data.url ofType:nil error:&error]) {
+            DDLogInfo(@"Reverted document %@ for watching", self.data.url.path);
+            [self enableWatchMode];
+        } else {
+            DDLogError(@"Error reverting file %@ for watching: %@", self.data.url.path, [error localizedDescription]);
+            [NSAlert alertWithError:error];
+            [alert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:NULL contextInfo:NULL];
+        }
+    }
+}
+
+- (void)documentForWatch:(NSDocument *)doc didSave:(BOOL)didSave contextInfo:(void  *)contextInfo
+{
+    if (didSave == YES) {
+        [self enableWatchMode];
+    }
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)item
+{
+    SEL action = item.action;
+    if (_currentFileMode == WATCH &&
+        (action == @selector(viewSelectionDidChangeViaMenuToEditor:) ||
+         action == @selector(viewSelectionDidChangeViaMenuToSplit:) ||
+         action == @selector(viewSelectionDidChangeViaMenuToPreview:))) {
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark Notifications
@@ -113,29 +214,6 @@
 }
 
 #pragma mark Internal
-
-/**
-  Gets the file mode string from the file mode type.
-  @param fileMode the file mode, one of enum FileMode
-  @return the file mode string or nil if the file mode is invalid
- */
-+ (NSString *)fileModeStringFromFileMode:(NSInteger)fileMode
-{
-    NSString *string = nil;
-
-    switch (fileMode) {
-        case EDIT:
-            string = @"Edit";
-            break;
-        case WATCH:
-            string = @"Watch";
-            break;
-        default:
-            DDLogError(@"%@", [NSString stringWithFormat:@"Unrecognized file mode %ld", fileMode]);
-            break;
-    }
-    return string;
-}
 
 /**
   Gets the view name from a view type.
@@ -203,11 +281,11 @@
     view.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     
     // Add view to content view
-    if (currentViewController != nil) {
-        [currentViewController.view removeFromSuperview];
-        [currentViewController viewDidDisappear];
+    if (_currentViewController != nil) {
+        [_currentViewController.view removeFromSuperview];
+        [_currentViewController viewDidDisappear];
     }
-    currentViewController = viewController;
+    _currentViewController = viewController;
     [[self.window contentView] addSubview:view];
     [viewController viewDidAppear];
     if (viewController.editorTextView) {
@@ -219,7 +297,12 @@
 {
     NSString *footerText = @"NP Markdown";
     if (self.data.url) {
-        footerText = [self.data.url path];
+        if (_currentFileMode == EDIT) {
+            footerText = @"Editing ";
+        } else {
+            footerText = @"Watching ";
+        }
+        footerText = [footerText stringByAppendingString:self.data.url.path];
     }
     [self.footerTextField setStringValue:footerText];
 }

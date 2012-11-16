@@ -60,14 +60,11 @@
     [NPMNotificationQueue removeObserver:self name:NPMNotificationRenderComplete object:self.renderer];
 }
 
-
 #pragma mark Editor
 
 - (void)initializeEditorTextView
 {
-    if (self.editorTextView && self.data && self.data.text) {
-        [self.editorTextView setString:[self.data text]];
-    }
+    [self updateTextViewFromData];
 }
 
 /**
@@ -83,6 +80,17 @@
 {
     NSString *newText = [[self.editorTextView textStorage] string];
     self.data.text = newText;
+}
+
+- (void)updateTextViewFromData
+{
+    if (self.editorTextView) {
+        NSString *text = [[self data] text];
+        if (!text) {
+            text = @"";
+        }
+        [self.editorTextView setString:text];
+    }
 }
 
 #pragma mark Preview

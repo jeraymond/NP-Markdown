@@ -15,6 +15,7 @@
  *******************************************************************************/
 
 #import <Cocoa/Cocoa.h>
+#import "VDKQueue.h"
 
 @class NPMData;
 @class NPMRenderer;
@@ -22,7 +23,7 @@
 /**
   The Markdown document.
  */
-@interface NPMDocument : NSDocument
+@interface NPMDocument : NSDocument<VDKQueueDelegate>
 
 /**
   The model data.
@@ -33,5 +34,11 @@
   The renderer.
  */
 @property (strong) NPMRenderer *renderer;
+
+/**
+  Change the file mode to watch.
+  @param notification the notification, may be nil
+ */
+- (void)changeFileModeToWatch:(NSNotification *)notification;
 
 @end

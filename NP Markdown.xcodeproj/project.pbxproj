@@ -21,6 +21,7 @@
 		3F440A5C1641A83D001204AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F440A5A1641A83D001204AA /* InfoPlist.strings */; };
 		3F53BFD51641ABF300C65521 /* NPMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F53BFD41641ABF300C65521 /* NPMWindowController.m */; };
 		3F60FB6616513FA800D68FF5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3F60FB6516513FA800D68FF5 /* README.md */; };
+		3F60FB731651E31A00D68FF5 /* VDKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F60FB711651E31A00D68FF5 /* VDKQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3F71A75E1649FEBB008003EF /* NPMNotificationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F71A75D1649FEBB008003EF /* NPMNotificationQueue.m */; };
 		3F71A762164B2330008003EF /* NPMDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F71A761164B2330008003EF /* NPMDataTests.m */; };
 		3F71A765164B4B7A008003EF /* NPMRendererTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F71A764164B4B7A008003EF /* NPMRendererTests.m */; };
@@ -38,7 +39,6 @@
 		3FE2232E16420B19006B95B4 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2232316420B19006B95B4 /* DDTTYLogger.m */; };
 		3FE2232F16420B19006B95B4 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2232616420B19006B95B4 /* ContextFilterLogFormatter.m */; };
 		3FE2233016420B19006B95B4 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2232816420B19006B95B4 /* DispatchQueueLogFormatter.m */; };
-		3FE2233116420B19006B95B4 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3FE2232916420B19006B95B4 /* README.txt */; };
 		3FF9B25A164C940D00C77C7D /* autolink.c in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9B24B164C940D00C77C7D /* autolink.c */; };
 		3FF9B25B164C940D00C77C7D /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9B24D164C940D00C77C7D /* buffer.c */; };
 		3FF9B25C164C940D00C77C7D /* houdini_href_e.c in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9B250164C940D00C77C7D /* houdini_href_e.c */; };
@@ -84,6 +84,9 @@
 		3F53BFD31641ABF300C65521 /* NPMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMWindowController.h; sourceTree = "<group>"; };
 		3F53BFD41641ABF300C65521 /* NPMWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMWindowController.m; sourceTree = "<group>"; };
 		3F60FB6516513FA800D68FF5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		3F60FB6F1651E31A00D68FF5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		3F60FB701651E31A00D68FF5 /* VDKQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKQueue.h; sourceTree = "<group>"; };
+		3F60FB711651E31A00D68FF5 /* VDKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKQueue.m; sourceTree = "<group>"; };
 		3F71A75C1649FEBB008003EF /* NPMNotificationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMNotificationQueue.h; sourceTree = "<group>"; };
 		3F71A75D1649FEBB008003EF /* NPMNotificationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMNotificationQueue.m; sourceTree = "<group>"; };
 		3F71A760164B2330008003EF /* NPMDataTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMDataTests.h; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 				3F440A571641A83D001204AA /* NP MarkdownTests */,
 				3FE2231916420B19006B95B4 /* Lumberjack */,
 				3FF9B24A164C940D00C77C7D /* Sundown */,
+				3F60FB6E1651E31A00D68FF5 /* VDKQueue */,
 				3F440A301641A83D001204AA /* Frameworks */,
 				3F440A2E1641A83D001204AA /* Products */,
 			);
@@ -256,6 +260,16 @@
 				3F440A5A1641A83D001204AA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F60FB6E1651E31A00D68FF5 /* VDKQueue */ = {
+			isa = PBXGroup;
+			children = (
+				3F60FB6F1651E31A00D68FF5 /* README.md */,
+				3F60FB701651E31A00D68FF5 /* VDKQueue.h */,
+				3F60FB711651E31A00D68FF5 /* VDKQueue.m */,
+			);
+			path = VDKQueue;
 			sourceTree = "<group>";
 		};
 		3FE2231916420B19006B95B4 /* Lumberjack */ = {
@@ -391,7 +405,6 @@
 				3FE1DE3C1641C37600E5F14D /* NPMSplitView.xib in Resources */,
 				3FE222EA1641C98F006B95B4 /* EditTemplate.png in Resources */,
 				3FE222F91641CB9B006B95B4 /* NP Markdown.icns in Resources */,
-				3FE2233116420B19006B95B4 /* README.txt in Resources */,
 				3F60FB6616513FA800D68FF5 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +462,7 @@
 				3FF9B25F164C940D00C77C7D /* html_smartypants.c in Sources */,
 				3FF9B260164C940D00C77C7D /* markdown.c in Sources */,
 				3FF9B261164C940D00C77C7D /* stack.c in Sources */,
+				3F60FB731651E31A00D68FF5 /* VDKQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

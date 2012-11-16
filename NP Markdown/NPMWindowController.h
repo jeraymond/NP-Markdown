@@ -19,6 +19,13 @@
 @class NPMData;
 @class NPMRenderer;
 @class NPMViewController;
+@class NPMDocument;
+
+
+enum FileMode {
+    EDIT,
+    WATCH
+};
 
 /**
   Window controller for Markdown documents.
@@ -39,9 +46,14 @@
 @property (strong) NPMData *data;
 
 /**
- The renderer.
+  The renderer.
  */
 @property (strong) NPMRenderer *renderer;
+
+/**
+  The current file mode. One of enum FileMode.
+ */
+@property (readonly) enum FileMode currentFileMode;
 
 /**
   The view segmented control used to change the currently displayed view.
@@ -92,5 +104,10 @@
   @param sender the file mode segmented control
  */
 - (IBAction)fileModeSelectionDidChange:(id)sender;
+
+/**
+  Enable watch mode.
+ */
+- (void)enableWatchMode;
 
 @end

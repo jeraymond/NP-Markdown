@@ -35,7 +35,7 @@
 - (void)testNotificationNPMNotificationDataChanged
 {
     notificationReceived = NO;
-    [NPMNotificationQueue addObserver:self selector:@selector(gotNotification:) name:NPMNotificationRenderComplete];
+    [NPMNotificationQueue addObserver:self selector:@selector(gotNotification:) name:NPMNotificationRenderComplete object:nil];
 
     NPMData *data = [[NPMData alloc] init];
     data.text = @"The text";

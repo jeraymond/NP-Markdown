@@ -22,7 +22,7 @@
 static NSString * const NPMNotificationDataChanged = @"NPMNotificationDataChanged";
 
 /**
- The notification that indicates the model data has been saved.
+  The notification that indicates the model data has been saved.
  */
 static NSString * const NPMNotificationDataSaved = @"NPMNotificationDataSaved";
 
@@ -30,6 +30,16 @@ static NSString * const NPMNotificationDataSaved = @"NPMNotificationDataSaved";
   The notification that indicates the model data has been rendered.
  */
 static NSString * const NPMNotificationRenderComplete = @"NPMNotificationRenderComplete";
+
+/**
+  The notification that indicates the file mode is to be changed to watch.
+ */
+static NSString * const NPMNotificationChangeFileModeToWatch = @"NPMNotificationChangeFileModeToWatch";
+
+/**
+ The notification that indicates the file mode is to be changed to edit.
+ */
+static NSString * const NPMNotificationChangeFileModeToEdit = @"NPMNotificationChangeFileModeToEdit";
 
 /**
   FIFO ordered notification queue.
