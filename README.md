@@ -1,14 +1,10 @@
 # NP Markdown
 
-A simplistic Markdown editor with live preview for OS X
+A simplistic Markdown editor and previewer for OS X
 
 ## Features
 
-* Simple Markdown text editor
-* Live preview of rendered Markdown as you type
-* File watch mode
-    * Watch a file for changes updating the preview each time the file is saved
-
-## Building
-
-Open the project in Xcode 4.5+ and build.
+* Markdown editing
+* Live preview of rendered Markdown while you edit
+* Live preview of rendered Markdown for files edited externally on save (file watch mode)
+* Many preview styles (Github, sans-serif, etc)
