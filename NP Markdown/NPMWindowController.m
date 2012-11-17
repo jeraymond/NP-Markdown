@@ -24,6 +24,8 @@
 @implementation NPMWindowController {
     NPMViewController *_currentViewController;
 
+    NSInteger _previousViewType;
+
     enum FileMode _currentFileMode;
 
     enum ViewType {
@@ -123,7 +125,7 @@
     
     DDLogInfo(@"File mode changed to edit");
     _currentFileMode = EDIT;
-    [self activateViewForType:SPLIT]; // TODO: restore previous view
+    [self activateViewForType:_previousViewType];
     [self.viewSegmentedControl setEnabled:YES];
     [self updateFooterText];
     [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationChangeFileModeToEdit object:self];
@@ -143,8 +145,9 @@
 
     DDLogInfo(@"File mode changed to watch");
     _currentFileMode = WATCH;
+    _previousViewType = self.viewSegmentedControl.selectedSegment;
     [self.fileModeSegmentedControl setSelectedSegment:WATCH];
-    [self activateViewForType:PREVIEW]; // TODO: store previous view
+    [self activateViewForType:PREVIEW];
     [self.viewSegmentedControl setEnabled:NO];
     [self updateFooterText];
     [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationChangeFileModeToWatch object:self];
