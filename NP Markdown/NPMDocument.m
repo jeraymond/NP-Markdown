@@ -71,7 +71,7 @@
         }
         return success;
     }
-    // TODO: localized error message
+
     NSMutableDictionary *errorUserInfo = [[NSMutableDictionary alloc] init];
     NSString *errorDescription = @"The document is empty.";
     [errorUserInfo setObject:errorDescription forKey:NSLocalizedDescriptionKey];
@@ -107,8 +107,6 @@
 
 - (void)changeFileModeToWatch:(NSNotification *)notification
 {
-    // TODO: prompt to save document before switching file modes if neccessary
-    DDLogInfo(@"TODO: prompt to save document before switching file modes if neccessary");
     [_windowController enableWatchMode];
     [self watchForChanges];
 }
@@ -129,10 +127,8 @@
     NSError *error;
     if ([self readFromURL:self.fileURL ofType:nil error:&error]) {
         DDLogInfo(@"Successfully read data from %@", self.fileURL.path);
-        // TODO: 
     } else {
         DDLogError(@"Error reading data from %@", self.fileURL.path);
-        // TODO: handle error
     }
 }
 
