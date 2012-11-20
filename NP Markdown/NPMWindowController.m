@@ -20,10 +20,10 @@
 #import "NPMData.h"
 #import "NPMNotificationQueue.h"
 #import "NPMDocument.h"
+#import "NPMStyle.h"
 
 @implementation NPMWindowController {
     NPMViewController *_currentViewController;
-
     NSInteger _previousViewType;
 
     enum FileMode _currentFileMode;
@@ -53,6 +53,7 @@
         self.viewControllers = [NSMutableDictionary dictionary];
         self.data = data;
         self.renderer = renderer;
+        self.style = [[NPMStyle alloc] init];
         [NPMNotificationQueue addObserver:self selector:@selector(dataSaved:) name:NPMNotificationDataSaved object:self.data];
     }
     return self;
@@ -64,12 +65,29 @@
 {
     [super windowDidLoad];
     [self updateFooterText];
+    [self initializeStylePopUpButton];
     [self.fileModeSegmentedControl setSelectedSegment:EDIT];
     [self.viewSegmentedControl setSelectedSegment:SPLIT];
     [self activateViewForType:SPLIT];
     if (_currentViewController.editorTextView) {
         [self.window performSelector:@selector(makeFirstResponder:) withObject:_currentViewController.editorTextView afterDelay:0.0];
     }
+}
+
+#pragma mark Style
+
+- (void)initializeStylePopUpButton
+{
+    for (NSString *style in self.style.styleNames) {
+        [self.stylePopUpButton addItemWithTitle:style];
+    }
+    [self.stylePopUpButton selectItemAtIndex:0];
+    self.style.selectedStyle = self.stylePopUpButton.selectedItem.title;
+}
+
+- (IBAction)styleDidChange:(id)sender
+{
+    self.style.selectedStyle = self.stylePopUpButton.selectedItem.title;
 }
 
 #pragma mark Selectors
@@ -254,6 +272,7 @@
     [self.viewControllers setObject:controller forKey:viewName];
     controller.data = self.data;
     controller.renderer = self.renderer;
+    controller.style = self.style;
     return controller;
 }
 

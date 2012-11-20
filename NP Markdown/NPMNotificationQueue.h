@@ -37,9 +37,14 @@ static NSString * const NPMNotificationRenderComplete = @"NPMNotificationRenderC
 static NSString * const NPMNotificationChangeFileModeToWatch = @"NPMNotificationChangeFileModeToWatch";
 
 /**
- The notification that indicates the file mode is to be changed to edit.
+  The notification that indicates the file mode is to be changed to edit.
  */
 static NSString * const NPMNotificationChangeFileModeToEdit = @"NPMNotificationChangeFileModeToEdit";
+
+/**
+  The notification that indicates the style changed.
+ */
+static NSString * const NPMNotificationStyleChanged = @"NPMNotificationStyleChanged";
 
 /**
   FIFO ordered notification queue.

@@ -20,7 +20,7 @@
 @class NPMRenderer;
 @class NPMViewController;
 @class NPMDocument;
-
+@class NPMStyle;
 
 enum FileMode {
     EDIT,
@@ -51,6 +51,11 @@ enum FileMode {
 @property (strong) NPMRenderer *renderer;
 
 /**
+  The style.
+ */
+@property (strong) NPMStyle *style;
+
+/**
   The current file mode. One of enum FileMode.
  */
 @property (readonly) enum FileMode currentFileMode;
@@ -64,6 +69,11 @@ enum FileMode {
   The file mode segmented control used to change the current file mode.
  */
 @property (strong) IBOutlet NSSegmentedControl *fileModeSegmentedControl;
+
+/**
+  The view pop up button use to change the currently selected style.
+ */
+@property (strong) IBOutlet NSPopUpButton *stylePopUpButton;
 
 /**
   The display text field in the footer.

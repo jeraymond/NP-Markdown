@@ -14,52 +14,33 @@
  * limitations under the License.
  *******************************************************************************/
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
-@class NPMData;
-@class NPMRenderer;
-@class NPMStyle;
-@class WebView;
+@interface NPMStyle : NSObject
 
 /**
-  The view controller for the Editor and Preview view.
+  The list of available styles.
  */
-@interface NPMViewController : NSViewController
+@property (strong) NSArray *styleNames;
 
 /**
-  The model data.
+  The currently selected style.
  */
-@property (strong) NPMData *data;
+@property (strong) NSString *selectedStyle;
 
 /**
-  The renderer.
+  The template root directory of the currently selected style.
  */
-@property (strong) NPMRenderer *renderer;
+@property (readonly) NSURL *selectedStyleTemplateRoot;
 
 /**
-  The style.
+  Applies the named style to the given HTML.
+  The incoming HTML should be an html fragment.
+  This method will supply the html, body, head, etc HTML elements.
+  @param style one of the supported styles as defined by the styleNames property
+  @param html the html block to stylize
+  @return the stylized html
  */
-@property (strong) NPMStyle *style;
-
-/**
-  The editor text view.
- */
-@property (strong) IBOutlet NSTextView *editorTextView;
-
-/**
-  The preview view. 
-  The preview content is a subview of this view.
- */
-@property (strong) IBOutlet NSView *previewView;
-
-/**
-  Notify the view controller that its view was added to a view hierarchy.
- */
-- (void)viewDidAppear;
-
-/**
-  Notify the view controller that its view was removed from the view hierarchy.
- */
-- (void)viewDidDisappear;
+- (NSString *)applyStyle:(NSString *)style toHtml:(NSString *)html;
 
 @end

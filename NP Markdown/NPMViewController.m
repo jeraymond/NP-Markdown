@@ -19,6 +19,7 @@
 #import "NPMData.h"
 #import "NPMRenderer.h"
 #import "NPMNotificationQueue.h"
+#import "NPMStyle.h"
 
 @implementation NPMViewController {
     WebView *previewWebView;
@@ -53,11 +54,13 @@
 - (void)setupNotifications
 {
     [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:) name:NPMNotificationRenderComplete object:self.renderer];
+    [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:) name:NPMNotificationStyleChanged object:self.style];
 }
 
 - (void)teardownNotifications
 {
     [NPMNotificationQueue removeObserver:self name:NPMNotificationRenderComplete object:self.renderer];
+    [NPMNotificationQueue removeObserver:self name:NPMNotificationStyleChanged object:self.style];
 }
 
 #pragma mark Editor
@@ -113,8 +116,10 @@
 - (void)updatePreview
 {
     if (previewWebView) {
-        NSString *previewHtmlContent = self.renderer.html;
-        [[previewWebView mainFrame] loadHTMLString:previewHtmlContent baseURL:nil];
+        NSString *renderedHtml = self.renderer.html;
+        NSString *currentStyle = self.style.selectedStyle;
+        NSString *styledHtml = [self.style applyStyle:currentStyle toHtml:renderedHtml];
+        [[previewWebView mainFrame] loadHTMLString:styledHtml baseURL:self.style.selectedStyleTemplateRoot];
     }
 }
 

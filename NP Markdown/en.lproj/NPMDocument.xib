@@ -68,9 +68,11 @@
 							<string key="NSToolbarItemPaletteLabel">View</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSSegmentedControl" key="NSToolbarItemView" id="197537767">
-								<nil key="NSNextResponder"/>
+								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {208, 25}}</string>
+								<reference key="NSSuperview"/>
+								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSegmentedCell" key="NSCell" id="610748163">
@@ -126,9 +128,11 @@
 							<string key="NSToolbarItemPaletteLabel">File Mode</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSSegmentedControl" key="NSToolbarItemView" id="361026373">
-								<nil key="NSNextResponder"/>
+								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {78, 25}}</string>
+								<reference key="NSSuperview"/>
+								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSegmentedCell" key="NSCell" id="874992877">
@@ -181,14 +185,16 @@
 							<string key="NSToolbarItemPaletteLabel">Style</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSPopUpButton" key="NSToolbarItemView" id="120864646">
-								<nil key="NSNextResponder"/>
+								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {150, 28}}</string>
+								<reference key="NSSuperview"/>
+								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSPopUpButtonCell" key="NSCell" id="144780757">
 									<int key="NSCellFlags">-2080374720</int>
-									<int key="NSCellFlags2">2048</int>
+									<int key="NSCellFlags2">134219776</int>
 									<reference key="NSSupport" ref="696312069"/>
 									<string key="NSCellIdentifier">_NS:9</string>
 									<reference key="NSControlView" ref="120864646"/>
@@ -352,7 +358,7 @@
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="91279811"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {2560, 1578}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{800, 671}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSAutorecalculatesContentBorderThicknessMinY">NO</bool>
@@ -412,6 +418,22 @@
 						<reference key="destination" ref="91279811"/>
 					</object>
 					<int key="connectionID">100075</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">stylePopUpButton</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="120864646"/>
+					</object>
+					<int key="connectionID">100077</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">styleDidChange:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="120864646"/>
+					</object>
+					<int key="connectionID">100078</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -676,7 +698,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">100076</int>
+			<int key="maxID">100078</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -685,6 +707,7 @@
 					<string key="superclassName">NSWindowController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="fileModeSelectionDidChange:">id</string>
+						<string key="styleDidChange:">id</string>
 						<string key="viewSelectionDidChange:">id</string>
 						<string key="viewSelectionDidChangeViaMenuToEditor:">id</string>
 						<string key="viewSelectionDidChangeViaMenuToPreview:">id</string>
@@ -693,6 +716,10 @@
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="fileModeSelectionDidChange:">
 							<string key="name">fileModeSelectionDidChange:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="styleDidChange:">
+							<string key="name">styleDidChange:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="viewSelectionDidChange:">
@@ -715,6 +742,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="fileModeSegmentedControl">NSSegmentedControl</string>
 						<string key="footerTextField">NSTextField</string>
+						<string key="stylePopUpButton">NSPopUpButton</string>
 						<string key="viewSegmentedControl">NSSegmentedControl</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -725,6 +753,10 @@
 						<object class="IBToOneOutletInfo" key="footerTextField">
 							<string key="name">footerTextField</string>
 							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="stylePopUpButton">
+							<string key="name">stylePopUpButton</string>
+							<string key="candidateClassName">NSPopUpButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="viewSegmentedControl">
 							<string key="name">viewSegmentedControl</string>
