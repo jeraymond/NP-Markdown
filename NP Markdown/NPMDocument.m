@@ -60,12 +60,8 @@
     if (text && text.length > 0) {
         BOOL success = [text writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:outError];
         if (success) {
-            if (self.fileURL){
-                self.data.url = self.fileURL;
-            } else {
-                self.data.url = url;
-            }
-            [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationDataSaved object:self.data];
+            // Delay the notification, self.fileURL may not be updated until after this method completes
+            [self performSelector:@selector(updateUrlAndNotifyDataSaved) withObject:nil afterDelay:0.0];
         } else {
             DDLogError(@"Error saving to %@: %@", [url absoluteString], [*outError localizedDescription]);
         }
@@ -78,6 +74,12 @@
     [errorUserInfo setObject:errorDescription forKey:NSLocalizedFailureReasonErrorKey];
     *outError = [NSError errorWithDomain:@"NPMErrorDomain" code:0 userInfo:errorUserInfo];
     return NO;
+}
+
+- (void)updateUrlAndNotifyDataSaved
+{
+    self.data.url = self.fileURL;
+    [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationDataSaved object:self.data];
 }
 
 - (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError *__autoreleasing *)outError
