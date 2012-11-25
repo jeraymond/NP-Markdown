@@ -2,7 +2,7 @@ body {
   font: 13px Helvetica, arial, freesans, clean, sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  width: 850px;
+  max-width: 850px;
   background-color: white;
   border: 1px solid #CACACA;
   padding: 30px;
