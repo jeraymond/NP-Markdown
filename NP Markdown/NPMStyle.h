@@ -29,6 +29,11 @@
 @property (strong) NSString *selectedStyle;
 
 /**
+  The default style.
+ */
+@property (readonly) NSString *defaultStyle;
+
+/**
   The template root directory of the currently selected style.
  */
 @property (readonly) NSURL *selectedStyleTemplateRoot;

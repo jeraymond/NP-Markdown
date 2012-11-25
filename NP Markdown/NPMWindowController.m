@@ -81,7 +81,7 @@
     for (NSString *style in self.style.styleNames) {
         [self.stylePopUpButton addItemWithTitle:style];
     }
-    [self.stylePopUpButton selectItemAtIndex:0];
+    [self.stylePopUpButton selectItemWithTitle:self.style.defaultStyle];
     self.style.selectedStyle = self.stylePopUpButton.selectedItem.title;
 }
 

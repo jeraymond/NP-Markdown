@@ -18,6 +18,8 @@
 #import "NPMStyle.h"
 #import "NPMNotificationQueue.h"
 
+static NSString * const NPMStyleUserDefaultsDefaultStyleKey = @"NPMStyleUserDefaultsDefaultStyleKey";
+
 @implementation NPMStyle {
     NSString *_selectedStyle;
 }
@@ -48,12 +50,25 @@
 - (void)setSelectedStyle:(NSString *)currentStyle
 {
     _selectedStyle = currentStyle;
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:currentStyle forKey:NPMStyleUserDefaultsDefaultStyleKey];
+    [prefs synchronize];
     [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationStyleChanged object:self];
 }
 
 - (NSString *)selectedStyle
 {
     return _selectedStyle;
+}
+
+- (NSString *)defaultStyle
+{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *style = [prefs stringForKey:NPMStyleUserDefaultsDefaultStyleKey];
+    if (style) {
+        return style;
+    }
+    return [self.styleNames objectAtIndex:0];
 }
 
 - (NSURL *)selectedStyleTemplateRoot
