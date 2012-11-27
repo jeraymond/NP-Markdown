@@ -33,7 +33,6 @@
         SPLIT,
         PREVIEW
     };
-
 }
 
 #pragma mark Init
