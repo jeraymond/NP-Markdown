@@ -22,7 +22,7 @@
 #import "NPMStyle.h"
 
 @implementation NPMViewController {
-    WebView *previewWebView;
+    WebView *_previewWebView;
 }
 
 #pragma mark NSViewController
@@ -100,26 +100,26 @@
 
 - (void)initializePreviewWebView
 {
-    if (self.previewView && !previewWebView) {
+    if (self.previewView && !_previewWebView) {
         NSRect frame = [self.previewView frame];
-        previewWebView = [[WebView alloc] initWithFrame:NSMakeRect(0, 0, frame.size.width, frame.size.height)];
-        [previewWebView setUIDelegate:self];
-        [previewWebView setFrameLoadDelegate:self];
-        [previewWebView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
+        _previewWebView = [[WebView alloc] initWithFrame:NSMakeRect(0, 0, frame.size.width, frame.size.height)];
+        [_previewWebView setUIDelegate:self];
+        [_previewWebView setFrameLoadDelegate:self];
+        [_previewWebView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
     }
-    if (self.previewView && previewWebView) {
-        [self.previewView addSubview:previewWebView];
+    if (self.previewView && _previewWebView) {
+        [self.previewView addSubview:_previewWebView];
         [self updatePreview];
     }
 }
 
 - (void)updatePreview
 {
-    if (previewWebView) {
+    if (_previewWebView) {
         NSString *renderedHtml = self.renderer.html;
         NSString *currentStyle = self.style.selectedStyle;
         NSString *styledHtml = [self.style applyStyle:currentStyle toHtml:renderedHtml];
-        [[previewWebView mainFrame] loadHTMLString:styledHtml baseURL:self.style.selectedStyleTemplateRoot];
+        [[_previewWebView mainFrame] loadHTMLString:styledHtml baseURL:self.style.selectedStyleTemplateRoot];
     }
 }
 

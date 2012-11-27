@@ -26,8 +26,8 @@
 
 @implementation NPMRenderer {
     NSString *_html;
-    BOOL renderNeeded;
-    BOOL renderInProgress;
+    BOOL _renderNeeded;
+    BOOL _renderInProgress;
 }
 
 #pragma mark Init
@@ -70,15 +70,15 @@
 - (void)render
 {
     @synchronized(self) {
-        if (renderNeeded) {
+        if (_renderNeeded) {
             DDLogInfo(@"Render already queued, request ignored");
             return;
-        } else if (renderInProgress) {
+        } else if (_renderInProgress) {
             DDLogInfo(@"Render in progress, queued render request");
-            renderNeeded = YES;
+            _renderNeeded = YES;
             return;
         } else {
-            renderInProgress = YES;
+            _renderInProgress = YES;
         }
     }
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -134,10 +134,10 @@
 
         @synchronized(self) {
             DDLogInfo(@"Render complete");
-            renderInProgress = NO;
-            if (renderNeeded) {
+            _renderInProgress = NO;
+            if (_renderNeeded) {
                 DDLogInfo(@"Queued render detected");
-                renderNeeded = NO;
+                _renderNeeded = NO;
                 [self render];
             }
         }
