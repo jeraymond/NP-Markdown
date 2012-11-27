@@ -16,6 +16,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+  Tracks preview style information.
+ */
 @interface NPMStyle : NSObject
 
 /**

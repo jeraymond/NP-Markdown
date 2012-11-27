@@ -33,10 +33,10 @@ enum FileMode {
 @interface NPMWindowController : NSWindowController
 
 /**
- Initialize the window with the given data and renderer
- @param data the data
- @param render the renderer
- @return the window controller or nil on error
+  Initialize the window with the given data and renderer.
+  @param data the data
+  @param render the renderer
+  @return the window controller or nil on error
  */
 - (id)initWithData:(NPMData *)data andRenderer:(NPMRenderer *)renderer;
 
@@ -98,14 +98,14 @@ enum FileMode {
 - (IBAction)viewSelectionDidChangeViaMenuToEditor:(id)sender;
 
 /**
- Notify the window controller that the view selection has changed to Split via the menu.
- @param sender the menu item that changed the view
+  Notify the window controller that the view selection has changed to Split via the menu.
+  @param sender the menu item that changed the view
  */
 - (IBAction)viewSelectionDidChangeViaMenuToSplit:(id)sender;
 
 /**
- Notify the window controller that the view selection has changed to Preview via the menu.
- @param sender the menu item that changed the view
+  Notify the window controller that the view selection has changed to Preview via the menu.
+  @param sender the menu item that changed the view
  */
 - (IBAction)viewSelectionDidChangeViaMenuToPreview:(id)sender;
 
