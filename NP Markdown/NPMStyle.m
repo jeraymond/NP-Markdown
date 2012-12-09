@@ -104,7 +104,8 @@ static NSString * const NPMStyleUserDefaultsDefaultStyleKey = @"NPMStyleUserDefa
             styledHtml = [data stringByReplacingOccurrencesOfString:@"{{markdown}}" withString:html];
             DDLogInfo(@"Applied style %@", style);
         } else {
-            DDLogError(@"Error loading template %@ from %@ because of error %@", style, styleTemplatePath, [error localizedDescription]);
+            DDLogError(@"Error loading template %@ from %@ because of error %@", style, styleTemplatePath,
+                       [error localizedDescription]);
         }
     } else {
         DDLogError(@"Expected 1 template matching style %@ but found %ld", style, templatePaths.count);

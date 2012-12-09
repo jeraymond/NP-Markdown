@@ -53,8 +53,10 @@
 
 - (void)setupNotifications
 {
-    [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:) name:NPMNotificationRenderComplete object:self.renderer];
-    [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:) name:NPMNotificationStyleChanged object:self.style];
+    [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:)
+                                 name:NPMNotificationRenderComplete object:self.renderer];
+    [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:)
+                                 name:NPMNotificationStyleChanged object:self.style];
 }
 
 - (void)teardownNotifications

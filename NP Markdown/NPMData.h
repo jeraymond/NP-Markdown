@@ -18,7 +18,8 @@
 
 /**
   The Markdown data model.
-  When the data text is changed via the text property an NPMNotificationDataChanged notification is fired with the notification object set to the data instance.
+  When the data text is changed via the text property an NPMNotificationDataChanged notification is fired.
+  The notification object set to the data instance.
  */
 @interface NPMData : NSObject
 

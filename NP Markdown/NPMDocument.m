@@ -45,8 +45,10 @@
 {
     _windowController = [[NPMWindowController alloc] initWithData:self.data andRenderer:self.renderer];
     [self addWindowController:_windowController];
-    [NPMNotificationQueue addObserver:self selector:@selector(changeFileModeToWatch:) name:NPMNotificationChangeFileModeToWatch object:_windowController];
-    [NPMNotificationQueue addObserver:self selector:@selector(changeFileModeToEdit:) name:NPMNotificationChangeFileModeToEdit object:_windowController];
+    [NPMNotificationQueue addObserver:self selector:@selector(changeFileModeToWatch:)
+                                 name:NPMNotificationChangeFileModeToWatch object:_windowController];
+    [NPMNotificationQueue addObserver:self selector:@selector(changeFileModeToEdit:)
+                                 name:NPMNotificationChangeFileModeToEdit object:_windowController];
 }
 
 + (BOOL)autosavesInPlace
@@ -98,7 +100,8 @@
 - (BOOL)validateUserInterfaceItem:(id <NSValidatedUserInterfaceItem>)anItem
 {
     SEL theAction = [anItem action];
-    if (_windowController.currentFileMode == WATCH && (theAction == @selector(saveDocument:) || theAction == @selector(revertDocumentToSaved:))) {
+    if (_windowController.currentFileMode == WATCH && (theAction == @selector(saveDocument:)
+                                                       || theAction == @selector(revertDocumentToSaved:))) {
         return NO;
     }
     return [super validateUserInterfaceItem:anItem];

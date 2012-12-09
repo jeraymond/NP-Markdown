@@ -45,7 +45,8 @@
     self = [super init];
     if (self) {
         self.data = data;
-        [NPMNotificationQueue addObserver:self selector:@selector(dataChanged:) name:NPMNotificationDataChanged object:self.data];
+        [NPMNotificationQueue addObserver:self selector:@selector(dataChanged:) name:NPMNotificationDataChanged
+                                   object:self.data];
         [self render];
     }
     return self;
@@ -104,7 +105,8 @@
             struct buf *outputBuffer;
             int extensions = 0;
 
-            extensions |= MKDEXT_TABLES | MKDEXT_FENCED_CODE | MKDEXT_AUTOLINK | MKDEXT_STRIKETHROUGH | MKDEXT_SPACE_HEADERS | MKDEXT_SUPERSCRIPT;
+            extensions |= MKDEXT_TABLES | MKDEXT_FENCED_CODE | MKDEXT_AUTOLINK | MKDEXT_STRIKETHROUGH
+                | MKDEXT_SPACE_HEADERS | MKDEXT_SUPERSCRIPT;
             outputBuffer = bufnew(64);
             sdhtml_renderer(&callbacks, &options, 0);
             sdMarkdown = sd_markdown_new(extensions, 16, &callbacks, &options);

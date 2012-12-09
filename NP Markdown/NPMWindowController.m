@@ -53,7 +53,8 @@
         self.data = data;
         self.renderer = renderer;
         self.style = [[NPMStyle alloc] init];
-        [NPMNotificationQueue addObserver:self selector:@selector(dataSaved:) name:NPMNotificationDataSaved object:self.data];
+        [NPMNotificationQueue addObserver:self selector:@selector(dataSaved:) name:NPMNotificationDataSaved
+                                   object:self.data];
     }
     return self;
 }
@@ -69,7 +70,8 @@
     [self.viewSegmentedControl setSelectedSegment:SPLIT];
     [self activateViewForType:SPLIT];
     if (_currentViewController.editorTextView) {
-        [self.window performSelector:@selector(makeFirstResponder:) withObject:_currentViewController.editorTextView afterDelay:0.0];
+        [self.window performSelector:@selector(makeFirstResponder:) withObject:_currentViewController.editorTextView
+                          afterDelay:0.0];
     }
 }
 
@@ -183,14 +185,16 @@
     if (self.data.url) {
         [alert addButtonWithTitle:@"Don't Save"];
     }
-    [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(alertForSaveBeforeWatchDidEnd:returnCode:contextInfo:) contextInfo:nil];
+    [alert beginSheetModalForWindow:self.window modalDelegate:self
+                     didEndSelector:@selector(alertForSaveBeforeWatchDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
 
 - (void) alertForSaveBeforeWatchDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
     [[alert window] orderOut:alert];
     if (returnCode == NSAlertFirstButtonReturn) {
-        [[self document] saveDocumentWithDelegate:self didSaveSelector:@selector(documentForWatch:didSave:contextInfo:) contextInfo:NULL];
+        [[self document] saveDocumentWithDelegate:self didSaveSelector:@selector(documentForWatch:didSave:contextInfo:)
+                                      contextInfo:NULL];
         DDLogInfo(@"Saving before watch");
     } else if (returnCode == NSAlertSecondButtonReturn) {
         DDLogInfo(@"Cancel watch");

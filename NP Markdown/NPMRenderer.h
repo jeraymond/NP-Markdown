@@ -22,7 +22,8 @@
   The Markdown renderer.
   The renderer registers for NPMNotificationDataChanged notifications.
   When these notifications are recieved the Markdown contained in the NPMData object is rendered.
-  When rendering completes an NPMNotificationRenderComplete notification is fired with the notification object set to the renderer instance.
+  When rendering completes an NPMNotificationRenderComplete notification is fired.
+  The notification object set to the renderer instance.
   The rendered HTML is then available via the html property.
  */
 @interface NPMRenderer : NSObject

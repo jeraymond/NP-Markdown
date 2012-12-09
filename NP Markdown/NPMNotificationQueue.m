@@ -24,7 +24,8 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         NSNotification *notification = [NSNotification notificationWithName:name object:object userInfo:nil];
-        [[NSNotificationQueue defaultQueue] enqueueNotification:notification postingStyle:NSPostNow coalesceMask:NSNotificationCoalescingOnName forModes:nil];
+        [[NSNotificationQueue defaultQueue] enqueueNotification:notification postingStyle:NSPostNow
+                                                   coalesceMask:NSNotificationCoalescingOnName forModes:nil];
     });
 }
 
