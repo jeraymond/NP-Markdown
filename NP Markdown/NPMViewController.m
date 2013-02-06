@@ -20,9 +20,15 @@
 #import "NPMRenderer.h"
 #import "NPMNotificationQueue.h"
 #import "NPMStyle.h"
+#import "NPMLog.h"
+
+NSString * const NPMPrevewHtmlScrollAnchor = @"<a name='NP Markdown scroll-to placeholder'></a>";
+NSString * const NPMPreviewHtmlScrollJavaScript = @"window.location.hash='NP Markdown scroll-to placeholder';";
 
 @implementation NPMViewController {
     WebView *_previewWebView;
+    NSString *_currentPreviewHtml;
+    NSImageView *_previewImageView;
 }
 
 #pragma mark NSViewController
@@ -78,7 +84,8 @@
  */
 - (void)textDidChange:(NSNotification *)notification
 {
-    [self updateDataFromTextView];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateDataFromTextView) object:nil];
+    [self performSelector:@selector(updateDataFromTextView) withObject:nil afterDelay:0.25];
 }
 
 - (void)updateDataFromTextView
@@ -102,27 +109,122 @@
 
 - (void)initializePreviewWebView
 {
-    if (self.previewView && !_previewWebView) {
+    if (_previewWebView) {
+        [_previewWebView removeFromSuperview];
+        _previewWebView = nil;
+    }
+    if (_previewView && !_previewWebView) {
         NSRect frame = [self.previewView frame];
         _previewWebView = [[WebView alloc] initWithFrame:NSMakeRect(0, 0, frame.size.width, frame.size.height)];
         [_previewWebView setUIDelegate:self];
         [_previewWebView setFrameLoadDelegate:self];
         [_previewWebView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
-    }
-    if (self.previewView && _previewWebView) {
         [self.previewView addSubview:_previewWebView];
-        [self updatePreview];
     }
 }
 
+
 - (void)updatePreview
 {
+     // Some of the preview update actions take place in this method.
+     // The rest occur once the web view has finished loading in webView:didFinishLoadForFrame:
+
     if (_previewWebView) {
+        // Get styled HTML
         NSString *renderedHtml = self.renderer.html;
         NSString *currentStyle = self.style.selectedStyle;
         NSString *styledHtml = [self.style applyStyle:currentStyle toHtml:renderedHtml];
+
+        // Determine scroll position and insert the scroll anchor.
+        // The scrolling is triggered when the webView:didFinishLoadForFrame
+        NSString *previousHtml = _currentPreviewHtml;
+        _currentPreviewHtml = styledHtml;
+        styledHtml = [self stringByInsertingString:NPMPrevewHtmlScrollAnchor
+                                        intoString:styledHtml
+                   atFirstLineMismatchAsComparedTo:previousHtml];
+
+        // Swap web view for image view - smooths transition between renders
+        if ([_previewWebView superview] == _previewView) {
+            _previewImageView = [self imageViewFromWebView:_previewWebView];
+            [[_previewView animator] replaceSubview:_previewWebView with:_previewImageView];
+        }
+
+        // Set the conent
         [[_previewWebView mainFrame] loadHTMLString:styledHtml baseURL:self.style.selectedStyleTemplateRoot];
     }
+}
+
+- (void)webView:(WebView *)webView didFinishLoadForFrame:(WebFrame *)frame
+{
+    if (_previewWebView) {
+        // Perform scroll
+        [[_previewWebView windowScriptObject] evaluateWebScript:NPMPreviewHtmlScrollJavaScript];
+    }
+
+    // Restore web view
+    if ([_previewImageView superview] == _previewView) {
+        [[_previewView animator] replaceSubview:_previewImageView with:_previewWebView];
+    }
+}
+
+- (NSImageView *)imageViewFromWebView:(WebView *)webView
+{
+    NSBitmapImageRep *imageRep = [webView bitmapImageRepForCachingDisplayInRect:[webView frame]];
+    [webView cacheDisplayInRect:[webView frame] toBitmapImageRep:imageRep];
+    NSImageView *imageView = [[NSImageView alloc] initWithFrame:[webView frame]];
+    NSImage *image = [[NSImage alloc] initWithSize:[webView frame].size];
+    [image addRepresentation:imageRep];
+    [imageView setImage:image];
+    return imageView;
+}
+
+- (NSString *)stringByInsertingString:(NSString *)marker intoString:(NSString *)target
+      atFirstLineMismatchAsComparedTo:(NSString *)other
+{
+    if (target == nil || target.length == 0 || other == nil || other.length == 0) {
+        return target;
+    }
+
+    NSString *result = target;
+
+    NSUInteger targetIndex = 0;
+    NSUInteger targetLength = [target length];
+
+    NSUInteger otherIndex = 0;
+    NSUInteger otherLength = [other length];
+
+    NSRange targetLineRange;
+    NSString *targetLine;
+
+    NSRange otherLineRange;
+    NSString *otherLine;
+
+    BOOL insertMade = NO;
+
+    while (targetIndex < targetLength && otherIndex < otherLength) {
+        targetLineRange = [target lineRangeForRange:NSMakeRange(targetIndex, 0)];
+        targetLine = [target substringWithRange:targetLineRange];
+
+        otherLineRange = [other lineRangeForRange:NSMakeRange(otherIndex, 0)];
+        otherLine = [other substringWithRange:otherLineRange];
+
+        targetIndex = NSMaxRange(targetLineRange);
+        otherIndex = NSMaxRange(otherLineRange);
+
+        if (![targetLine isEqualToString:otherLine]) {
+            result = [result stringByReplacingCharactersInRange:NSMakeRange(targetIndex - [targetLine length], 0) withString:marker];
+            insertMade = YES;
+            break;
+        }
+    }
+    if (!insertMade && targetLength != otherLength) { // insertion or deletion at end of text
+        if (targetLength > otherLength) { // text inserted at end
+            result = [result stringByReplacingCharactersInRange:NSMakeRange(targetIndex, 0) withString:marker];
+        } else { // text deleted at end
+            result = [result stringByAppendingString:marker];
+        }
+    }
+    return result;
 }
 
 - (void)updatePreviewFromNotification:(NSNotification *)notification
