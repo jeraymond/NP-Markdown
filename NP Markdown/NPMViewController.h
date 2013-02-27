@@ -19,6 +19,7 @@
 @class NPMData;
 @class NPMRenderer;
 @class NPMStyle;
+@class NPMWindowController;
 @class WebView;
 
 /**
@@ -51,6 +52,11 @@
   The preview content is a subview of this view.
  */
 @property (strong) IBOutlet NSView *previewView;
+
+/**
+  The parent window controller.
+ */
+@property (strong) NPMWindowController *windowController;
 
 /**
   Notify the view controller that its view was added to a view hierarchy.

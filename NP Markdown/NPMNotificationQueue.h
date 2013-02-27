@@ -47,6 +47,11 @@ static NSString * const NPMNotificationChangeFileModeToEdit = @"NPMNotificationC
 static NSString * const NPMNotificationStyleChanged = @"NPMNotificationStyleChanged";
 
 /**
+  The notification that the view selection changed.
+ */
+static NSString * const NPMNotificationViewSelectionChanged = @"NPMNotificationViewSelectionChanged";
+
+/**
   FIFO ordered notification queue.
  */
 @interface NPMNotificationQueue : NSObject

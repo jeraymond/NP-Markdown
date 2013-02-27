@@ -16,6 +16,7 @@
 
 #import <WebKit/WebKit.h>
 #import "NPMViewController.h"
+#import "NPMWindowController.h"
 #import "NPMData.h"
 #import "NPMRenderer.h"
 #import "NPMNotificationQueue.h"
@@ -63,12 +64,15 @@ NSString * const NPMPreviewHtmlScrollJavaScript = @"window.location.hash='NP Mar
                                  name:NPMNotificationRenderComplete object:self.renderer];
     [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:)
                                  name:NPMNotificationStyleChanged object:self.style];
+    [NPMNotificationQueue addObserver:self selector:@selector(updatePreviewFromNotification:)
+                                 name:NPMNotificationViewSelectionChanged object:self.windowController];
 }
 
 - (void)teardownNotifications
 {
     [NPMNotificationQueue removeObserver:self name:NPMNotificationRenderComplete object:self.renderer];
     [NPMNotificationQueue removeObserver:self name:NPMNotificationStyleChanged object:self.style];
+    [NPMNotificationQueue removeObserver:self name:NPMNotificationViewSelectionChanged object:self.windowController];
 }
 
 #pragma mark Editor
@@ -128,7 +132,7 @@ NSString * const NPMPreviewHtmlScrollJavaScript = @"window.location.hash='NP Mar
 {
      // Some of the preview update actions take place in this method.
      // The rest occur once the web view has finished loading in webView:didFinishLoadForFrame:
-
+    DDLogInfo(@"Updating preview");
     if (_previewWebView) {
         // Get styled HTML
         NSString *renderedHtml = self.renderer.html;
@@ -229,6 +233,7 @@ NSString * const NPMPreviewHtmlScrollJavaScript = @"window.location.hash='NP Mar
 
 - (void)updatePreviewFromNotification:(NSNotification *)notification
 {
+    DDLogInfo(@"Updating preview from notif %@", [notification name]);
     [self updatePreview];
 }
 

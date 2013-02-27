@@ -75,6 +75,13 @@
     }
 }
 
+- (void)windowWillClose:(NSNotification *)notification
+{
+    if(_currentViewController) {
+        [_currentViewController viewDidDisappear];
+    }
+}
+
 #pragma mark Style
 
 - (void)initializeStylePopUpButton
@@ -291,6 +298,7 @@
     NPMViewController *newViewController = [self viewControllerForViewName:viewName];
     [self activateViewController:newViewController];
     DDLogInfo(@"View selection changed to %@", viewName);
+    [NPMNotificationQueue enqueueNotificationWithName:NPMNotificationViewSelectionChanged object:self];
 }
 
 - (void)activateViewController:(NPMViewController *)viewController
