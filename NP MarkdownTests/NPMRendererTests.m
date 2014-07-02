@@ -27,7 +27,7 @@
 
 - (void)testNoDefaultInit
 {
-    STAssertThrows((void)[[NPMRenderer alloc] init], @"NPMRenderer init unexpectedly suceeded");
+    XCTAssertThrows((void)[[NPMRenderer alloc] init], @"NPMRenderer init unexpectedly suceeded");
 }
 
 #pragma mark Test Render Complete Notification
@@ -40,18 +40,18 @@
     NPMData *data = [[NPMData alloc] init];
     data.text = @"The text";
     [NSThread sleepForTimeInterval:1];
-    STAssertFalse(notificationReceived, @"Unexpectedly received a notification");
+    XCTAssertFalse(notificationReceived, @"Unexpectedly received a notification");
 
     // Initial render on init.
     NPMRenderer *renderer __attribute__((unused)) = [[NPMRenderer alloc] initWithData:data];
     [NSThread sleepForTimeInterval:1];
-    STAssertTrue(notificationReceived, @"Did not receive %@ notification", NPMNotificationDataChanged);
+    XCTAssertTrue(notificationReceived, @"Did not receive %@ notification", NPMNotificationDataChanged);
 
     // Render on data text updated
     notificationReceived = NO;
     data.text = @"Updated";
     [NSThread sleepForTimeInterval:1];
-    STAssertTrue(notificationReceived, @"Did not receive %@ notification", NPMNotificationDataChanged);
+    XCTAssertTrue(notificationReceived, @"Did not receive %@ notification", NPMNotificationDataChanged);
 }
 
 - (void)gotNotification:(NSNotification *)notification

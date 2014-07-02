@@ -28,7 +28,7 @@
 {
     NPMData *data = [[NPMData alloc] init];
     data.text = @"The text";
-    STAssertEqualObjects(data.text, @"The text", @"Data text was not set or retrieved correctly");
+    XCTAssertEqualObjects(data.text, @"The text", @"Data text was not set or retrieved correctly");
 }
 
 #pragma mark Test Data Change Notification
@@ -42,7 +42,7 @@
     data.text = @"The text";
     [NSThread sleepForTimeInterval:1];
 
-    STAssertTrue(notificationReceived, @"Did not receive %@ notification", NPMNotificationDataChanged);
+    XCTAssertTrue(notificationReceived, @"Did not receive %@ notification", NPMNotificationDataChanged);
 }
 
 - (void)gotNotification:(NSNotification *)notification

@@ -14,8 +14,8 @@
  * limitations under the License.
  *******************************************************************************/
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface NPMDataTests : SenTestCase
+@interface NPMDataTests : XCTestCase
 
 @end
