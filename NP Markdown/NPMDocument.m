@@ -132,6 +132,10 @@
     NSError *error;
     if ([self readFromURL:self.fileURL ofType:nil error:&error]) {
         DDLogInfo(@"Successfully read data from %@", self.fileURL.path);
+
+        // Reregister for file change notifications as file may have been deleted/readded
+        [self doNotWatchForChanges];
+        [self watchForChanges];
     } else {
         DDLogError(@"Error reading data from %@", self.fileURL.path);
     }
@@ -139,7 +143,7 @@
 
 - (void)watchForChanges
 {
-    [_vdkQueue addPath:[self.fileURL path] notifyingAbout:VDKQueueNotifyAboutWrite];
+    [_vdkQueue addPath:[self.fileURL path] notifyingAbout:VDKQueueNotifyDefault];
     DDLogInfo(@"Watching file %@ for changes on save", [self.fileURL path]);
 }
 
