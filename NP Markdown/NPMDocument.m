@@ -130,7 +130,7 @@
 {
     DDLogInfo(@"Contents changed for watched file %@", fpath);
     NSError *error;
-    if ([self readFromURL:self.fileURL ofType:nil error:&error]) {
+    if ([self readFromURL:self.fileURL ofType:@"" error:&error]) {
         DDLogInfo(@"Successfully read data from %@", self.fileURL.path);
 
         // Reregister for file change notifications as file may have been deleted/readded

@@ -15,6 +15,7 @@
  *******************************************************************************/
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 
 @class NPMData;
 @class NPMRenderer;
@@ -25,7 +26,7 @@
 /**
   The view controller for the Editor and Preview view.
  */
-@interface NPMViewController : NSViewController
+@interface NPMViewController : NSViewController<WebUIDelegate, WebFrameLoadDelegate>
 
 /**
   The model data.

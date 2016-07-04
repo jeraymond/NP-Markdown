@@ -10,29 +10,29 @@
 	<string>NP Markdown</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>885D7A48-4AB0-4DBE-9D79-77CF631FEF70</key>
-		<string>ssh://github.com/jeraymond/NP-Markdown.git</string>
+		<key>1B1953F9A0BB5FD3B7A6E69FE390A78BCBC68150</key>
+		<string>github.com:jeraymond/NP-Markdown.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>NP Markdown.xcodeproj/project.xcworkspace</string>
+	<string>NP Markdown.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>885D7A48-4AB0-4DBE-9D79-77CF631FEF70</key>
+		<key>1B1953F9A0BB5FD3B7A6E69FE390A78BCBC68150</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/jeraymond/NP-Markdown.git</string>
+	<string>github.com:jeraymond/NP-Markdown.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>885D7A48-4AB0-4DBE-9D79-77CF631FEF70</string>
+	<string>1B1953F9A0BB5FD3B7A6E69FE390A78BCBC68150</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>885D7A48-4AB0-4DBE-9D79-77CF631FEF70</string>
+			<string>1B1953F9A0BB5FD3B7A6E69FE390A78BCBC68150</string>
 			<key>IDESourceControlWCCName</key>
 			<string>NP-Markdown</string>
 		</dict>

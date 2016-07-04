@@ -207,7 +207,7 @@
         DDLogInfo(@"Cancel watch");
     } else {
         NSError *error;
-        if ([[self document] revertToContentsOfURL:self.data.url ofType:nil error:&error]) {
+        if ([[self document] revertToContentsOfURL:self.data.url ofType:@"" error:&error]) {
             DDLogInfo(@"Reverted document %@ for watching", self.data.url.path);
             [self enableWatchMode];
         } else {

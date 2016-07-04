@@ -10,9 +10,12 @@
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>md</string>
+				<string>txt</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
+			<key>CFBundleTypeMIMETypes</key>
+			<array/>
 			<key>CFBundleTypeName</key>
 			<string>DocumentType</string>
 			<key>CFBundleTypeOSTypes</key>
@@ -30,7 +33,7 @@
 	<key>CFBundleIconFile</key>
 	<string>NP Markdown</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.niceprograms.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
